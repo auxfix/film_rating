@@ -1,6 +1,7 @@
 {
   "movieRatingSystem.components.Header.Search": "Movie search",
-  "movieRatingSystem.components.Header.MyMovies": "My Movies"
+  "movieRatingSystem.components.Header.MyMovies": "My Movies",
+  "movieRatingSystem.components.Footer.about.message": "Movie rating system"
 }
 
 

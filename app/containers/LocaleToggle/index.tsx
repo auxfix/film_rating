@@ -8,12 +8,13 @@ import React from 'react';
 import { createSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Toggle from 'components/Toggle';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import Wrapper from './Wrapper';
-import messages from './messages';
 import { appLocales } from '../../i18n';
 import { changeLocale } from '../LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
+
 
 const stateSelector = createSelector(
   makeSelectLocale(),
@@ -26,14 +27,13 @@ export default function LocaleToggle() {
   const { locale } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
-  const onLocaleToggle = evt => dispatch(changeLocale(evt.target.value));
+  const onLocaleToggle = option => dispatch(changeLocale(option.value));
   return (
     <Wrapper>
-      <Toggle
+      <Dropdown
+        options={appLocales}
+        onChange={onLocaleToggle}
         value={locale}
-        values={appLocales}
-        messages={messages}
-        onToggle={onLocaleToggle}
       />
     </Wrapper>
   );

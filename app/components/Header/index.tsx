@@ -1,22 +1,24 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
 import messages from './messages';
+import LocaleToggle from '../../containers/LocaleToggle';
+import Wrapper from './Wrapper';
 
 function Header() {
   return (
-    <div>
-      <NavBar>
+    <Wrapper>
+      <div>
         <HeaderLink to="/">
           <FormattedMessage {...messages.search} />
         </HeaderLink>
         <HeaderLink to="/my">
           <FormattedMessage {...messages.myMovies} />
         </HeaderLink>
-      </NavBar>
-    </div>
+      </div>
+      <LocaleToggle/>
+    </Wrapper>
   );
 }
 
