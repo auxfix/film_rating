@@ -23,10 +23,15 @@ const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
-  min-height: 100%;
+  min-height: 100vh;
   padding: 0 16px;
   flex-direction: column;
 `;
+
+const ContentWrapper = styled.div`
+  flex: 1;
+`;
+
 
 export default function App() {
   return (
@@ -38,11 +43,13 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
+      <ContentWrapper>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/features" component={FeaturePage} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </ContentWrapper>
       <Footer />
       <GlobalStyle />
     </AppWrapper>
