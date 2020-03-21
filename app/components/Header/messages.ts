@@ -14,6 +14,6 @@ export default defineMessages({
   },
   myMovies: {
     id: `${scope}.MyMovies`,
-    defaultMessage: 'My movies',
+    defaultMessage: 'My Movies',
   },
 });
