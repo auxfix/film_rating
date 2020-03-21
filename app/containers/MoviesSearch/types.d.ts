@@ -1,21 +1,23 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { ApplicationRootState } from 'types';
+import { MovieListItem } from './MovieListItem/types';
 
 /* --- STATE --- */
 
-interface HomeState {
-  readonly username: string;
+interface SearchMovies {
+  readonly moviename: string;
+  readonly movies: MovieListItem[];
 }
 
 /* --- ACTIONS --- */
-type AppActions = ActionType<typeof actions>;
+type SearchMoviesActions = ActionType<typeof actions>;
 
 
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;
-type ContainerState = HomeState;
-type ContainerActions = AppActions;
+type ContainerState = SearchMovies;
+type ContainerActions = SearchMoviesActions;
 
 export { RootState, ContainerState, ContainerActions };

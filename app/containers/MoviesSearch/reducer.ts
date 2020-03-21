@@ -1,26 +1,31 @@
 import ActionTypes from './constants';
-import { ContainerState, ContainerActions } from './types';
+import { ContainerActions, ContainerState } from './types';
+import { MovieListItem } from './MovieListItem/types';
 
-// The initial state of the App
 export const initialState: ContainerState = {
-  username: '',
+  moviename: '',
+  movies: [],
 };
 
 
-// Take this container's state (as a slice of root state), this container's actions and return new state
-function homeReducer(
+function searchMovieReducer(
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {
   switch (action.type) {
     case ActionTypes.CHANGE_MOVIE_NAME:
       return {
-        // Delete prefixed '@' from the github username
-        username: action.payload.replace(/@/gi, ''),
+        moviename: action.payload,
+        movies: state.movies,
       };
+    case ActionTypes.LOAD_MOVIES_SUCCESS:
+      return {
+        moviename: state.moviename,
+        movies: action.payload.movies,
+      }
     default:
       return state;
   }
 }
 
-export default homeReducer;
+export default searchMovieReducer;

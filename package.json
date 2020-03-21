@@ -49,23 +49,6 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "npm run lint:eslint:fix",
-      "git add --force"
-    ],
-    "*.{md,json}": [
-      "prettier --write",
-      "git add --force"
-    ],
-    "*.ts": "npm run lint:tslint",
-    "*.tsx": "npm run lint:tslint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:tslint"
-    }
-  },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },

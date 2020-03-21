@@ -1,7 +1,7 @@
 import MovieDB from './movieDB';
 import MyMovie from './myMovie';
 
-export {
+export default {
   MovieDB,
   MyMovie,
 };

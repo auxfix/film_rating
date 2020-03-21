@@ -1,9 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,53 +5,51 @@ import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectError, makeSelectLoading, makeSelectRepos } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { makeSelectError, makeSelectLoading } from 'containers/App/selectors';
+import { changeMovieName, loadMovies } from './actions';
+import { makeSelectSearchName, makeSelectMovies } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { MovieListItem } from './MovieListItem/types';
 
-const key = 'home';
+const key = 'movieSearch';
 
 const stateSelector = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
+  movies: makeSelectMovies(),
+  serachName: makeSelectSearchName(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 export default function HomePage() {
-  const { repos, username, loading, error } = useSelector(stateSelector);
+  const { movies, serachName, loading, error } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
 
-  // Not gonna declare event types here. No need. any is fine
-  const onChangeUsername = (evt: any) => dispatch(changeUsername(evt.target.value));
-  const onSubmitForm = (evt?: any) => {
+  const onChangeMovieName = (evt: any) => dispatch(changeMovieName(evt.target.value));
+  const onMakeSearch = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
       evt.preventDefault();
     }
-    if (!username) {
+    if (!serachName) {
       return;
     }
-    dispatch(loadRepos());
+    dispatch(loadMovies());
   };
 
   useInjectReducer({ key: key, reducer: reducer });
   useInjectSaga({ key: key, saga: saga });
 
   useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) {
-      onSubmitForm();
+    if (serachName && serachName.trim().length > 0) {
+      onMakeSearch();
     }
   }, []);
 
   const reposListProps = {
     loading: loading,
     error: error,
-    repos: repos,
+    movies: movies,
   };
 
   return (
@@ -70,7 +62,12 @@ export default function HomePage() {
         />
       </Helmet>
       <div>
-        Movies search page
+        <input onChange={onChangeMovieName}/>
+        <button onClick={onMakeSearch}>Search</button>
+
+        {
+          movies.map((mv: MovieListItem) => (<div key={mv.Title}>{mv.Title}</div>))
+        }
       </div>
     </article>
   );

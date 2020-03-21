@@ -1,18 +1,19 @@
-/**
- * Homepage selectors
- */
-
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 import { ApplicationRootState } from 'types';
 
 const selectHome = (state: ApplicationRootState) => {
-  return state.home || initialState;
+  return state.movieSearch || initialState;
 };
 
-const makeSelectUsername = () =>
+
+const makeSelectMovies = () =>
+  createSelector(selectHome, substate =>
+    substate.movies);
+
+const makeSelectSearchName = () =>
   createSelector(selectHome, substate => {
-    return substate.username;
+    return substate.moviename;
   });
 
-export { selectHome, makeSelectUsername };
+export { selectHome, makeSelectSearchName, makeSelectMovies };
