@@ -5,15 +5,15 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.components.Header';
+export const scope = 'movieRatingSystem.components.Header';
 
 export default defineMessages({
-  home: {
-    id: `${scope}.home`,
-    defaultMessage: 'Home',
+  search: {
+    id: `${scope}.Search`,
+    defaultMessage: 'Movie search',
   },
-  features: {
-    id: `${scope}.features`,
-    defaultMessage: 'Features_tst',
+  myMovies: {
+    id: `${scope}.MyMovies`,
+    defaultMessage: 'My movies',
   },
 });

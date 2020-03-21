@@ -11,9 +11,10 @@ import { Helmet } from 'react-helmet';
 import styled from 'styles/styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import MoviesSearch from 'containers/MoviesSearch/Loadable';
+import MovieDetails from 'containers/MovieDetails/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import MyMovies from 'containers/MyMovies/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -37,16 +38,17 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Film Rating System"
+        defaultTitle="Film Rating System"
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="Film Rating System" />
       </Helmet>
       <Header />
       <ContentWrapper>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/features" component={FeaturePage} />
+          <Route exact path="/" component={MoviesSearch} />
+          <Route path="/details" component={MovieDetails} />
+          <Route path="/my" component={MyMovies} />
           <Route path="" component={NotFoundPage} />
         </Switch>
       </ContentWrapper>

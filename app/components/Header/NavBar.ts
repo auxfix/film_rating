@@ -1,5 +1,6 @@
 import styled from 'styles/styled-components';
+import { colors } from 'styles/vars';
 
 export default styled.div`
-  text-align: center;
+  border-bottom: 1px solid ${colors.blue}
 `;
