@@ -1,6 +1,7 @@
-interface MovieListItem {
+interface MovieListItemType {
   Title: string;
+  imdbID: string;
 }
 
-export { MovieListItem };
+export { MovieListItemType };
 

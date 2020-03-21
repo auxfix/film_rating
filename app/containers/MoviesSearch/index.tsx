@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { push } from 'connected-react-router';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -10,7 +11,8 @@ import { changeMovieName, loadMovies } from './actions';
 import { makeSelectSearchName, makeSelectMovies } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { MovieListItem } from './MovieListItem/types';
+import { MovieListItemType } from './MovieListItem/types';
+import MovieItem from './MovieListItem';
 
 const key = 'movieSearch';
 
@@ -21,7 +23,7 @@ const stateSelector = createStructuredSelector({
   error: makeSelectError(),
 });
 
-export default function HomePage() {
+export default function MovieSearch() {
   const { movies, serachName, loading, error } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
@@ -66,7 +68,13 @@ export default function HomePage() {
         <button onClick={onMakeSearch}>Search</button>
 
         {
-          movies.map((mv: MovieListItem) => (<div key={mv.Title}>{mv.Title}</div>))
+          movies.map((mv: MovieListItemType) => (
+            <MovieItem
+              key={mv.imdbID}
+              movie={mv}
+              onMovieClick={(id) => dispatch(push(`/details/${id}`))}
+            />
+          ))
         }
       </div>
     </article>

@@ -1,12 +1,10 @@
 import ActionTypes from './constants';
 import { ContainerActions, ContainerState } from './types';
-import { MovieListItem } from './MovieListItem/types';
 
 export const initialState: ContainerState = {
   moviename: '',
   movies: [],
 };
-
 
 function searchMovieReducer(
   state: ContainerState = initialState,

@@ -1,13 +1,13 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { ApplicationRootState } from 'types';
-import { MovieListItem } from './MovieListItem/types';
+import { MovieListItemType } from './MovieListItem/types';
 
 /* --- STATE --- */
 
 interface SearchMovies {
   readonly moviename: string;
-  readonly movies: MovieListItem[];
+  readonly movies: MovieListItemType[];
 }
 
 /* --- ACTIONS --- */
