@@ -13,7 +13,7 @@ function homeReducer(
   action: ContainerActions,
 ): ContainerState {
   switch (action.type) {
-    case ActionTypes.CHANGE_USERNAME:
+    case ActionTypes.CHANGE_MOVIE_NAME:
       return {
         // Delete prefixed '@' from the github username
         username: action.payload.replace(/@/gi, ''),
