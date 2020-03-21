@@ -47,7 +47,7 @@ export default function App() {
       <ContentWrapper>
         <Switch>
           <Route exact path="/" component={MoviesSearch} />
-          <Route path="/details" component={MovieDetails} />
+          <Route path="/details/:id" component={MovieDetails} />
           <Route path="/my" component={MyMovies} />
           <Route path="" component={NotFoundPage} />
         </Switch>

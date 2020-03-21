@@ -10,7 +10,7 @@ export function* getFilms() {
   const moviename = yield select(makeSelectSearchName());
 
   try {
-    const films = yield call(API.MovieDB.getMovieByName, moviename);
+    const films = yield call(API.MovieDB.getMoviesByName, moviename);
     yield put(moviesLoaded(films.Search || []));
   } catch (err) {
     yield put(moviesLoadingError(err));
@@ -19,6 +19,6 @@ export function* getFilms() {
 
 
 
-export default function* githubData() {
+export default function* moviesSearchData() {
   yield takeLatest(ActionTypes.LOAD_MOVIES, getFilms);
 }

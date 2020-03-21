@@ -2,20 +2,27 @@ import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { ApplicationRootState } from 'types';
 
+export interface MovieDetails {
+  imdbID: string;
+  Title: string;
+}
+
+
 /* --- STATE --- */
 
-interface HomeState {
-  readonly username: string;
+interface MovieDetailState {
+  readonly id?: string;
+  readonly movieDetails?: MovieDetails;
 }
 
 /* --- ACTIONS --- */
-type AppActions = ActionType<typeof actions>;
+type MovieDetailsActions = ActionType<typeof actions>;
 
 
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;
-type ContainerState = HomeState;
-type ContainerActions = AppActions;
+type ContainerState = MovieDetailState;
+type ContainerActions = MovieDetailsActions;
 
 export { RootState, ContainerState, ContainerActions };
