@@ -5,6 +5,7 @@ import { ContainerState as AppState } from 'containers/App/types';
 import { ContainerState as HomeState } from 'containers/HomePage/types';
 import { ContainerState as MoviesSearch } from 'containers/MoviesSearch/types';
 import { ContainerState as MovieDetails } from 'containers/MovieDetails/types';
+import { ContainerState as MyMovies } from 'containers/MyMovies/types';
 
 export interface InjectedStore extends Store {
   injectedReducers: any;
@@ -33,6 +34,7 @@ export interface ApplicationRootState {
   readonly home: HomeState;
   readonly movieSearch: MoviesSearch;
   readonly movieDetails: MovieDetails;
+  readonly myMovies: MyMovies;
   // for testing purposes
   readonly test: any;
 }

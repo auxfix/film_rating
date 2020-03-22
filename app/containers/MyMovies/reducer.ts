@@ -1,26 +1,22 @@
 import ActionTypes from './constants';
 import { ContainerState, ContainerActions } from './types';
 
-// The initial state of the App
 export const initialState: ContainerState = {
-  username: '',
+  movies: [],
 };
 
-
-// Take this container's state (as a slice of root state), this container's actions and return new state
-function homeReducer(
+function myMoviesReducer(
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {
   switch (action.type) {
-    case ActionTypes.CHANGE_USERNAME:
+    case ActionTypes.LOAD_MY_MOVIES_SUCCESS:
       return {
-        // Delete prefixed '@' from the github username
-        username: action.payload.replace(/@/gi, ''),
+        movies: action.payload.movies,
       };
     default:
       return state;
   }
 }
 
-export default homeReducer;
+export default myMoviesReducer;

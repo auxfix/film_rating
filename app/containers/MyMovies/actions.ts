@@ -1,6 +1,9 @@
 import { action } from 'typesafe-actions';
-// import { } from './types';
-
 import ActionTypes from './constants';
+import { MovieListItemType } from '../MoviesSearch/MovieListItem/types';
 
-export const changeUsername = (name: string) => action(ActionTypes.CHANGE_USERNAME, name);
+export const getMyMovies = () => action(ActionTypes.GET_MY_MOVIES);
+export const myMoviesLoaded = (movies: MovieListItemType[]) =>
+  action(ActionTypes.LOAD_MY_MOVIES_SUCCESS, { movies: movies });
+export const myMoviesLoadedError = (error: object) =>
+  action(ActionTypes.LOAD_MY_MOVIES_ERROR, error);
