@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'connected-react-router';
@@ -19,8 +18,7 @@ import { MovieListItemType } from './components/MovieListItem/types';
 import MovieItem from './components/MovieListItem';
 import Button from 'components/Button';
 import messages from './messages';
-
-import './paging-styles.css';
+import Pagination from 'components/Pagination';
 
 const key = 'movieSearch';
 
@@ -104,25 +102,19 @@ export default function MovieSearch() {
             ))
           }
         </Box>
-        <Box
+        <Flex
           w={1}
+          justifyContent="center"
         >
-          <ReactPaginate
+          <Pagination
             pageCount={Math.ceil(totalResults / 10)}
-            onPageChange={(data) => {
-              dispatch(loadMovies(data.selected + 1));
+            onPageChange={(page) => {
+              dispatch(loadMovies(page));
             }}
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
             marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'}
+            pageRangeDisplayed={3}
           />
-        </Box>
+        </Flex>
       </Flex>
     </Flex>
   );
