@@ -1,7 +1,7 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { ApplicationRootState } from 'types';
-import { MovieListItemType } from './MovieListItem/types';
+import { MovieListItemType } from './components/MovieListItem/types';
 
 /* --- STATE --- */
 

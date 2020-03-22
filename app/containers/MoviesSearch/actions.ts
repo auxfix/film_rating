@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { MovieListItemType } from './MovieListItem/types';
+import { MovieListItemType } from './components/MovieListItem/types';
 import ActionTypes from './constants';
 
 export const changeMovieName = (name: string) => action(ActionTypes.CHANGE_MOVIE_NAME, name);

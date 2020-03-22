@@ -15,8 +15,8 @@ import BigInput from 'components/BigInput';
 import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { MovieListItemType } from './MovieListItem/types';
-import MovieItem from './MovieListItem';
+import { MovieListItemType } from './components/MovieListItem/types';
+import MovieItem from './components/MovieListItem';
 import Button from 'components/Button';
 import messages from './messages';
 
