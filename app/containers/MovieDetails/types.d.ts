@@ -5,6 +5,7 @@ import { ApplicationRootState } from 'types';
 export interface MovieDetails {
   imdbID: string;
   Title: string;
+  raiting?: number;
 }
 
 

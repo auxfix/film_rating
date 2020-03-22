@@ -13,7 +13,7 @@ function searchMovieReducer(
   switch (action.type) {
     case ActionTypes.LOAD_DETAILS_SUCCESS:
       return {
-        id: state.id,
+        ...state,
         movieDetails: action.payload,
       };
     default:

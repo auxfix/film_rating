@@ -13,12 +13,12 @@ function searchMovieReducer(
   switch (action.type) {
     case ActionTypes.CHANGE_MOVIE_NAME:
       return {
+        ...state,
         moviename: action.payload,
-        movies: state.movies,
       };
     case ActionTypes.LOAD_MOVIES_SUCCESS:
       return {
-        moviename: state.moviename,
+        ...state,
         movies: action.payload.movies,
       }
     default:

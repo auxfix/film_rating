@@ -6,9 +6,7 @@ import API from 'api';
 
 export function* getMovieDetails(action) {
   try {
-    console.log('1', action);
     const details = yield call(API.MovieDB.getMovieDetails, action.payload);
-    console.log('2', details);
     yield put(detailsLoaded(details || undefined));
   } catch (err) {
     yield put(detailsLoadedError(err));
