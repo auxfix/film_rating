@@ -30,6 +30,7 @@ const AppWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
   flex: 1;
 `;
 

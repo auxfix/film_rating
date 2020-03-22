@@ -57,7 +57,10 @@ export default function MovieSearch() {
   }, []);
 
   return (
-    <article>
+    <Flex
+      flexDireaction={'column'}
+      width={1}
+    >
       <Helmet>
         <title>Movies Search</title>
         <meta
@@ -65,25 +68,32 @@ export default function MovieSearch() {
           content="Movies search page"
         />
       </Helmet>
-      <div>
+      <Flex
+        width={1}
+        flexDirection={'column'}
+        justifyContent={'space-between'}
+      >
         <Box
-          mt={4}
+          width={1}
         >
-          <BigInput
-            onChangeText={onChangeMovieName}
-            value={searchName}
-            onPressEnter={onMakeSearch}
-          />
-        </Box>
-        <Flex
-          w={1}
-          py={2}
-          justifyContent={'flex-end'}
-        >
-          <Button onClick={onMakeSearch}>
-            <FormattedMessage {...messages.Search} />
-          </Button>
-        </Flex>
+          <Box
+            mt={4}
+          >
+            <BigInput
+              onChangeText={onChangeMovieName}
+              value={searchName}
+              onPressEnter={onMakeSearch}
+            />
+          </Box>
+          <Flex
+            w={1}
+            py={2}
+            justifyContent={'flex-end'}
+          >
+            <Button onClick={onMakeSearch}>
+              <FormattedMessage {...messages.Search} />
+            </Button>
+          </Flex>
           {
             movies && movies.map((mv: MovieListItemType) => (
               <MovieItem
@@ -93,6 +103,10 @@ export default function MovieSearch() {
               />
             ))
           }
+        </Box>
+        <Box
+          w={1}
+        >
           <ReactPaginate
             pageCount={Math.ceil(totalResults / 10)}
             onPageChange={(data) => {
@@ -108,7 +122,8 @@ export default function MovieSearch() {
             subContainerClassName={'pages pagination'}
             activeClassName={'active'}
           />
-      </div>
-    </article>
+        </Box>
+      </Flex>
+    </Flex>
   );
 }
