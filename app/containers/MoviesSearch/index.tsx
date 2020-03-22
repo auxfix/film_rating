@@ -4,6 +4,8 @@ import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'connected-react-router';
+import { Flex, Box } from '@rebass/grid';
+import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -15,6 +17,8 @@ import reducer from './reducer';
 import saga from './saga';
 import { MovieListItemType } from './MovieListItem/types';
 import MovieItem from './MovieListItem';
+import Button from 'components/Button';
+import messages from './messages';
 
 import './paging-styles.css';
 
@@ -52,12 +56,6 @@ export default function MovieSearch() {
     }
   }, []);
 
-  const reposListProps = {
-    loading: loading,
-    error: error,
-    movies: movies,
-  };
-
   return (
     <article>
       <Helmet>
@@ -68,11 +66,23 @@ export default function MovieSearch() {
         />
       </Helmet>
       <div>
-        <BigInput
-          onChangeText={onChangeMovieName}
-          value={searchName}
-        />
-        <button onClick={onMakeSearch}>Search</button>
+        <Box
+          mt={4}
+        >
+          <BigInput
+            onChangeText={onChangeMovieName}
+            value={searchName}
+          />
+        </Box>
+        <Flex
+          w={1}
+          py={2}
+          justifyContent={'flex-end'}
+        >
+          <Button onClick={onMakeSearch}>
+            <FormattedMessage {...messages.Search} />
+          </Button>
+        </Flex>
           {
             movies && movies.map((mv: MovieListItemType) => (
               <MovieItem

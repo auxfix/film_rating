@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import HeaderLink from './HeaderLink';
 import messages from './messages';
-import LocaleToggle from '../../containers/LocaleToggle';
+import LocaleToggle from 'containers/LocaleToggle';
 import Wrapper from './Wrapper';
 
 function Header() {

@@ -1,10 +1,10 @@
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.HomePage';
+export const scope = 'boilerplate.containers.MoviesSearch';
 
 export default defineMessages({
-  startProjectHeader: {
-    id: `${scope}.start_project.header`,
-    defaultMessage: 'Start your next react project in seconds',
+  Search: {
+    id: `${scope}.Search`,
+    defaultMessage: 'Search',
   },
 });
