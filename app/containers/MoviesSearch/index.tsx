@@ -9,6 +9,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectError, makeSelectLoading } from 'containers/App/selectors';
 import { changeMovieName, loadMovies } from './actions';
+import BigInput from 'components/BigInput';
 import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -22,21 +23,21 @@ const key = 'movieSearch';
 const stateSelector = createStructuredSelector({
   movies: makeSelectMovies(),
   totalResults: makeSelectTotalResults(),
-  serachName: makeSelectSearchName(),
+  searchName: makeSelectSearchName(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 export default function MovieSearch() {
-  const { movies, serachName, loading, error, totalResults } = useSelector(stateSelector);
+  const { movies, searchName, loading, error, totalResults } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
-  const onChangeMovieName = (evt: any) => dispatch(changeMovieName(evt.target.value));
+  const onChangeMovieName = (searchString) => dispatch(changeMovieName(searchString));
   const onMakeSearch = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
       evt.preventDefault();
     }
-    if (!serachName) {
+    if (!searchName) {
       return;
     }
     dispatch(loadMovies(1));
@@ -46,7 +47,7 @@ export default function MovieSearch() {
   useInjectSaga({ key: key, saga: saga });
 
   useEffect(() => {
-    if (serachName && serachName.trim().length > 0) {
+    if (searchName && searchName.trim().length > 0) {
       onMakeSearch();
     }
   }, []);
@@ -67,7 +68,10 @@ export default function MovieSearch() {
         />
       </Helmet>
       <div>
-        <input onChange={onChangeMovieName}/>
+        <BigInput
+          onChangeText={onChangeMovieName}
+          value={searchName}
+        />
         <button onClick={onMakeSearch}>Search</button>
           {
             movies && movies.map((mv: MovieListItemType) => (
