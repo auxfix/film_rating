@@ -72,6 +72,7 @@ export default function MovieSearch() {
           <BigInput
             onChangeText={onChangeMovieName}
             value={searchName}
+            onPressEnter={onMakeSearch}
           />
         </Box>
         <Flex

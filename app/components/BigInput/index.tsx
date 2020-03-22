@@ -17,9 +17,19 @@ function BigInput(props: Props) {
     value,
   } = props;
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      if (onPressEnter) {
+        onPressEnter(value);
+      }
+    }
+  }
+
+
   return (
     <Input
       value={value}
+      onKeyPress={handleKeyPress}
       onChange={(evt) => onChangeText(evt.target.value)}
     />
       );
