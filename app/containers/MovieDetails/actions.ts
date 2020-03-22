@@ -9,3 +9,8 @@ export const detailsLoaded = (details: MovieDetails) =>
   action(ActionTypes.LOAD_DETAILS_SUCCESS, details);
 export const detailsLoadedError = (error: object) =>
   action(ActionTypes.LOAD_DETAILS_ERROR, error);
+
+export const ratingWasChanged = (rating: number) =>
+  action(ActionTypes.RATING_WAS_CHANGED, rating);
+export const saveRating = () => action(ActionTypes.SAVE_RATING);
+export const ratingWasSaved = () => action(ActionTypes.RATING_WAS_SAVED);

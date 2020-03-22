@@ -3,8 +3,8 @@ import * as actions from './actions';
 import { ApplicationRootState } from 'types';
 
 export interface MovieDetails {
-  imdbID: string;
-  Title: string;
+  imdbID?: string;
+  Title?: string;
   raiting?: number;
 }
 
@@ -12,8 +12,8 @@ export interface MovieDetails {
 /* --- STATE --- */
 
 interface MovieDetailState {
-  readonly id?: string;
   readonly movieDetails?: MovieDetails;
+  readonly ratingWasChanged: boolean;
 }
 
 /* --- ACTIONS --- */

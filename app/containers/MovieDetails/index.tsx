@@ -5,20 +5,24 @@ import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectMovieDetails } from 'containers/MovieDetails/selectors';
-import { getMovieDetails } from './actions';
+import { selectDetailsState } from 'containers/MovieDetails/selectors';
+import { getMovieDetails, ratingWasChanged, saveRating } from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import { loadMovies } from '../MoviesSearch/actions';
+import Dropdown from 'react-dropdown';
 
 const key = 'movieDetails';
 
 const stateSelector = createStructuredSelector({
-  movieDetails: makeSelectMovieDetails(),
+  detailsState: selectDetailsState(),
 });
 
 export default function MovieDetails(props) {
-  const { movieDetails } = useSelector(stateSelector);
+  const { detailsState : {
+    movieDetails,
+    ratingWasChanged: ratingWasChangedFlag,
+    },
+  } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
 
@@ -28,6 +32,13 @@ export default function MovieDetails(props) {
   useEffect(() => {
     dispatch(getMovieDetails(props.match.params.id));
   }, []);
+
+  const changeRating = (rating) => {
+    if (rating.value) {
+      const parsedRating = Number.parseInt(rating.value, 10);
+      dispatch(ratingWasChanged(parsedRating));
+    }
+  };
 
   return (
     <article>
@@ -41,6 +52,19 @@ export default function MovieDetails(props) {
       Movie details
       <div>{movieDetails && movieDetails.imdbID}</div>
       <div>{movieDetails && movieDetails.Title}</div>
+      <div>
+        <Dropdown
+          options={['1', '2', '3', '4', '5']}
+          onChange={changeRating}
+          placeholder={'no rating'}
+          value={(movieDetails && movieDetails.raiting && movieDetails.raiting.toString()) || ''}
+        />
+      </div>
+      <div>
+        {ratingWasChangedFlag && (
+          <button onClick={() => dispatch(saveRating())}>save rating</button>
+        )}
+      </div>
     </article>
   );
 }

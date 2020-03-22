@@ -1,9 +1,9 @@
 import ActionTypes from './constants';
-import { ContainerActions, ContainerState } from './types';
+import { ContainerActions, ContainerState, MovieDetails } from './types';
 
 export const initialState: ContainerState = {
-  id: undefined,
   movieDetails: undefined,
+  ratingWasChanged: false,
 };
 
 function searchMovieReducer(
@@ -15,6 +15,21 @@ function searchMovieReducer(
       return {
         ...state,
         movieDetails: action.payload,
+      };
+    case ActionTypes.RATING_WAS_CHANGED:
+
+      return {
+        ...state,
+        ratingWasChanged: true,
+        movieDetails: {
+          ...state.movieDetails,
+          raiting: action.payload,
+        },
+      };
+    case ActionTypes.RATING_WAS_SAVED:
+      return {
+        ...state,
+        ratingWasChanged: false,
       };
     default:
       return state;
