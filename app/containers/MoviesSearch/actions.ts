@@ -4,7 +4,7 @@ import ActionTypes from './constants';
 
 export const changeMovieName = (name: string) => action(ActionTypes.CHANGE_MOVIE_NAME, name);
 
-export const loadMovies = () => action(ActionTypes.LOAD_MOVIES);
+export const loadMovies = (page: number) => action(ActionTypes.LOAD_MOVIES, {page: page});
 export const moviesLoaded = (searchResult: {
   Search: MovieListItemType[],
   totalResults: number,

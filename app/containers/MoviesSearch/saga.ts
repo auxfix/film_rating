@@ -6,11 +6,11 @@ import API from 'api';
 import { makeSelectSearchName } from 'containers/MoviesSearch/selectors';
 
 
-export function* getFilms() {
+export function* getFilms(action) {
   const moviename = yield select(makeSelectSearchName());
 
   try {
-    const searchResults = yield call(API.MovieDB.getMoviesByName, moviename);
+    const searchResults = yield call(API.MovieDB.getMoviesByName, moviename, action.payload.page);
     yield put(moviesLoaded(searchResults));
   } catch (err) {
     yield put(moviesLoadingError(err));

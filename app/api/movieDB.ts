@@ -1,8 +1,8 @@
 import globalConstants from '../globalConstants';
 
 export default class MovieDB {
-  public static getMoviesByName(name: string) {
-    return fetch(`${globalConstants.moviesDbApi}s=${name}&page=${1}`)
+  public static getMoviesByName(name: string, page: number = 1) {
+    return fetch(`${globalConstants.moviesDbApi}s=${name}&page=${page}`)
       .then(res => res.json());
   }
 

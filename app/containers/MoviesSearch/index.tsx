@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'connected-react-router';
@@ -14,6 +15,8 @@ import saga from './saga';
 import { MovieListItemType } from './MovieListItem/types';
 import MovieItem from './MovieListItem';
 
+import './paging-styles.css';
+
 const key = 'movieSearch';
 
 const stateSelector = createStructuredSelector({
@@ -26,7 +29,6 @@ const stateSelector = createStructuredSelector({
 
 export default function MovieSearch() {
   const { movies, serachName, loading, error, totalResults } = useSelector(stateSelector);
-  console.log(totalResults);
   const dispatch = useDispatch();
 
   const onChangeMovieName = (evt: any) => dispatch(changeMovieName(evt.target.value));
@@ -37,7 +39,7 @@ export default function MovieSearch() {
     if (!serachName) {
       return;
     }
-    dispatch(loadMovies());
+    dispatch(loadMovies(1));
   };
 
   useInjectReducer({ key: key, reducer: reducer });
@@ -67,16 +69,30 @@ export default function MovieSearch() {
       <div>
         <input onChange={onChangeMovieName}/>
         <button onClick={onMakeSearch}>Search</button>
-
-        {
-          movies && movies.map((mv: MovieListItemType) => (
-            <MovieItem
-              key={mv.imdbID}
-              movie={mv}
-              onMovieClick={(id) => dispatch(push(`/details/${id}`))}
-            />
-          ))
-        }
+          {
+            movies && movies.map((mv: MovieListItemType) => (
+              <MovieItem
+                key={mv.imdbID}
+                movie={mv}
+                onMovieClick={(id) => dispatch(push(`/details/${id}`))}
+              />
+            ))
+          }
+          <ReactPaginate
+            pageCount={Math.ceil(totalResults / 10)}
+            onPageChange={(data) => {
+              dispatch(loadMovies(data.selected + 1));
+            }}
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+          />
       </div>
     </article>
   );
