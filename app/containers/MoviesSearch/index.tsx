@@ -8,7 +8,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectError, makeSelectLoading } from 'containers/App/selectors';
 import { changeMovieName, loadMovies } from './actions';
-import { makeSelectSearchName, makeSelectMovies } from './selectors';
+import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { MovieListItemType } from './MovieListItem/types';
@@ -18,14 +18,15 @@ const key = 'movieSearch';
 
 const stateSelector = createStructuredSelector({
   movies: makeSelectMovies(),
+  totalResults: makeSelectTotalResults(),
   serachName: makeSelectSearchName(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 export default function MovieSearch() {
-  const { movies, serachName, loading, error } = useSelector(stateSelector);
-
+  const { movies, serachName, loading, error, totalResults } = useSelector(stateSelector);
+  console.log(totalResults);
   const dispatch = useDispatch();
 
   const onChangeMovieName = (evt: any) => dispatch(changeMovieName(evt.target.value));
@@ -68,7 +69,7 @@ export default function MovieSearch() {
         <button onClick={onMakeSearch}>Search</button>
 
         {
-          movies.map((mv: MovieListItemType) => (
+          movies && movies.map((mv: MovieListItemType) => (
             <MovieItem
               key={mv.imdbID}
               movie={mv}

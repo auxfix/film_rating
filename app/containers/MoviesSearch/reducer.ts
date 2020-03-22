@@ -4,6 +4,7 @@ import { ContainerActions, ContainerState } from './types';
 export const initialState: ContainerState = {
   moviename: '',
   movies: [],
+  totalResults: 0,
 };
 
 function searchMovieReducer(
@@ -19,8 +20,9 @@ function searchMovieReducer(
     case ActionTypes.LOAD_MOVIES_SUCCESS:
       return {
         ...state,
-        movies: action.payload.movies,
-      }
+        movies: action.payload.Search,
+        totalResults: action.payload.totalResults,
+      };
     default:
       return state;
   }

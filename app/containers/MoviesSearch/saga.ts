@@ -10,8 +10,8 @@ export function* getFilms() {
   const moviename = yield select(makeSelectSearchName());
 
   try {
-    const films = yield call(API.MovieDB.getMoviesByName, moviename);
-    yield put(moviesLoaded(films.Search || []));
+    const searchResults = yield call(API.MovieDB.getMoviesByName, moviename);
+    yield put(moviesLoaded(searchResults));
   } catch (err) {
     yield put(moviesLoadingError(err));
   }

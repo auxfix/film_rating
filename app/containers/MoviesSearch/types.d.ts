@@ -8,6 +8,7 @@ import { MovieListItemType } from './MovieListItem/types';
 interface SearchMovies {
   readonly moviename: string;
   readonly movies: MovieListItemType[];
+  readonly totalResults: number;
 }
 
 /* --- ACTIONS --- */
