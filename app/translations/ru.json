@@ -14,5 +14,7 @@
   "boilerplate.containers.MovieDetails.Type": "Тип",
   "boilerplate.containers.Poster.noImage": "нет постера",
 
-  "boilerplate.containers.MyMovies.myMovies": "Мои фильмы"
+  "boilerplate.containers.MyMovies.myMovies": "Мои фильмы",
+  "boilerplate.containers.MyMovies.name": "Название",
+  "boilerplate.containers.MyMovies.rating": "Рейтинг"
 }

@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { Flex } from '@rebass/grid';
 import styled from 'styles/styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import Wrapper from './Wrapper';
 import { Sort } from '../../constants';
 import { ArrowDown, ArrowUp } from './arrows';
+import messages from './messages';
+
 
 const ClickWrapper = styled.div`
   cursor: pointer;
@@ -47,7 +50,9 @@ function MoviesSortHeader(props: Props) {
         <Flex
           alignItems="center"
         >
-          <span>Name</span>
+          <span>
+            <FormattedMessage {...messages.name} />
+          </span>
           {getNameArrow(filed, order)}
         </Flex>
       </ClickWrapper>
@@ -57,7 +62,9 @@ function MoviesSortHeader(props: Props) {
         <Flex
           alignItems="center"
         >
-          <span>Rating</span>
+          <span>
+            <FormattedMessage {...messages.rating} />
+          </span>
           {getRatingArrow(filed, order)}
         </Flex>
       </ClickWrapper>
