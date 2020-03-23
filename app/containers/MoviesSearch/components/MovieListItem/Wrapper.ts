@@ -7,7 +7,7 @@ export default styled.div`
     background-color: ${colors.blue_hover};
   }
   display: flex;
-  min-height: 60px;
+  min-height: 50px;
   justify-content: flex-start;
   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
   align-items: center;
