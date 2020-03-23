@@ -16,6 +16,7 @@ import MyMovieListItem from './components/MyMovieListItem';
 import MoviesList from './components/MoviesList';
 import PageName from './components/PageName';
 import messages from './messages';
+import sortUtil from './utils/sorting';
 
 const key = 'myMovies';
 
@@ -25,6 +26,7 @@ const stateSelector = createStructuredSelector({
 
 export default function HomePage() {
   const { movies } = useSelector(stateSelector);
+  const sortedMovies = sortUtil(movies);
 
   const dispatch = useDispatch();
 
@@ -56,7 +58,7 @@ export default function HomePage() {
       </Box>
       <MoviesList>
         {
-          movies.map(mv => (
+          sortedMovies.map(mv => (
             <MyMovieListItem
               key={mv.imdbID}
               onMovieClick={(id) => dispatch(push(`/details/${id}`))}
