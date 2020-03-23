@@ -8,4 +8,4 @@ export const myMoviesLoaded = (movies: MyMovieListItemType[]) =>
 export const myMoviesLoadedError = (error: object) =>
   action(ActionTypes.LOAD_MY_MOVIES_ERROR, error);
 export const changeSorting = (field: string, order: string) =>
-  action(ActionTypes.CHANGE_SORTING, { field, order});
+  action(ActionTypes.CHANGE_SORTING, { field, order });

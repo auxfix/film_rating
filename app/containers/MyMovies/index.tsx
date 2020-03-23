@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectMyMovies, makeSelectMyMoviesSort } from './selectors';
-import { getMyMovies } from './actions';
+import { getMyMovies, changeSorting } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import MyMovieListItem from './components/MyMovieListItem';
@@ -17,6 +17,7 @@ import MoviesList from './components/MoviesList';
 import PageName from './components/PageName';
 import messages from './messages';
 import sortUtil from './utils/sorting';
+import MoviesSortHeader from './components/MoviesSortHeader';
 
 const key = 'myMovies';
 
@@ -56,6 +57,17 @@ export default function HomePage() {
         <PageName>
           <FormattedMessage {...messages.myMovies} />
         </PageName>
+      </Box>
+      <Box
+        mt="2"
+      >
+        <MoviesSortHeader
+          filed={sortState.field}
+          order={sortState.order}
+          onClickHandler={
+            (field, order) => dispatch(changeSorting(field, order))
+          }
+        />
       </Box>
       <MoviesList>
         {
