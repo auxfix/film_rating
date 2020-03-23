@@ -11,5 +11,9 @@
   "boilerplate.containers.MovieDetails.Genre": "Genre",
   "boilerplate.containers.MovieDetails.Title": "Title",
   "boilerplate.containers.MovieDetails.Type": "Type",
-  "boilerplate.containers.Poster.noImage": "no image"
+  "boilerplate.containers.Poster.noImage": "no image",
+
+  "boilerplate.containers.MyMovies.myMovies": "My Movies"
 }
+
+

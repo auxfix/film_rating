@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'connected-react-router';
+import { Flex, Box } from '@rebass/grid';
+import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -10,7 +12,10 @@ import { makeSelectMyMovies } from './selectors';
 import { getMyMovies } from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import MyMovieListItem from './MyMovieListItem';
+import MyMovieListItem from './components/MyMovieListItem';
+import MoviesList from './components/MoviesList';
+import PageName from './components/PageName';
+import messages from './messages';
 
 const key = 'myMovies';
 
@@ -31,7 +36,10 @@ export default function HomePage() {
   }, []);
 
   return (
-    <article>
+    <Flex
+      flexDirection="column"
+      width={1}
+    >
       <Helmet>
         <title>My Movies</title>
         <meta
@@ -39,8 +47,14 @@ export default function HomePage() {
           content="My Movies page"
         />
       </Helmet>
-      My Movies page
-      <div>
+      <Box
+        mt="2"
+      >
+        <PageName>
+          <FormattedMessage {...messages.myMovies} />
+        </PageName>
+      </Box>
+      <MoviesList>
         {
           movies.map(mv => (
             <MyMovieListItem
@@ -49,7 +63,7 @@ export default function HomePage() {
               movie={mv}
           />))
         }
-      </div>
-    </article>
+      </MoviesList>
+    </Flex>
   );
 }

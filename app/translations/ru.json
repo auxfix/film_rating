@@ -12,5 +12,7 @@
   "boilerplate.containers.MovieDetails.Genre": "Жанр",
   "boilerplate.containers.MovieDetails.Title": "Тайтл",
   "boilerplate.containers.MovieDetails.Type": "Тип",
-  "boilerplate.containers.Poster.noImage": "нет постера"
+  "boilerplate.containers.Poster.noImage": "нет постера",
+
+  "boilerplate.containers.MyMovies.myMovies": "Мои фильмы"
 }
