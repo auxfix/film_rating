@@ -43,12 +43,12 @@ export default class MyMovie {
   }
 
   public static getMyMovies(): Promise<MyMovieListItemType[]> {
-    return new Promise<MovieDetails[]>((resolve) => {
+    return new Promise<MyMovieListItemType[]>((resolve) => {
       const myMoviesRawData = localStorage.getItem(myMoviesStorageName);
       if (!myMoviesRawData) {
         resolve([]);
       } else {
-        const myMovies: MovieDetails[] = JSON.parse(myMoviesRawData);
+        const myMovies: MyMovieListItemType[] = JSON.parse(myMoviesRawData);
         resolve(myMovies);
       }
     });

@@ -1,18 +1,18 @@
 import { Sort } from '../constants';
 import { MyMovieListItemType } from '../types';
 
-function sortRating(a: MyMovieListItemType, b: MyMovieListItemType, order = Sort.ASC) {
+function sortRating(a: MyMovieListItemType, b: MyMovieListItemType, order: string = Sort.ASC) {
   const diff = a.rating - b.rating;
 
   if (order === Sort.ASC) {
-    console.log('1');
+
     return diff;
   }
-  console.log('2');
+
   return -1 * diff;
 }
 
-function sortName(a: MyMovieListItemType, b: MyMovieListItemType, order = Sort.ASC) {
+function sortName(a: MyMovieListItemType, b: MyMovieListItemType, order: string = Sort.ASC) {
   const diff = a.Title.toLowerCase().localeCompare(b.Title.toLowerCase());
 
   if (order === Sort.ASC) {
@@ -23,7 +23,7 @@ function sortName(a: MyMovieListItemType, b: MyMovieListItemType, order = Sort.A
 }
 
 
-function makeSort(movies: MyMovieListItemType[], sortField = Sort.NAME, order = Sort.ASC) {
+function makeSort(movies: MyMovieListItemType[], sortField: string  = Sort.NAME, order: string = Sort.ASC) {
   const copyToSort = movies.slice();
 
   const sortMethod = sortField === Sort.NAME ? sortName : sortRating;

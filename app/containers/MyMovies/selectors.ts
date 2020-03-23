@@ -15,4 +15,4 @@ const makeSelectMyMoviesSort = () =>
     return substate.sort;
   });
 
-export { selectMyMoviesState, makeSelectMyMovies };
+export { selectMyMoviesState, makeSelectMyMovies, makeSelectMyMoviesSort };

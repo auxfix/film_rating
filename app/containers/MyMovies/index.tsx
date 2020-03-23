@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectMyMovies } from './selectors';
+import { makeSelectMyMovies, makeSelectMyMoviesSort } from './selectors';
 import { getMyMovies } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -22,11 +22,12 @@ const key = 'myMovies';
 
 const stateSelector = createStructuredSelector({
   movies: makeSelectMyMovies(),
+  sortState: makeSelectMyMoviesSort(),
 });
 
 export default function HomePage() {
-  const { movies } = useSelector(stateSelector);
-  const sortedMovies = sortUtil(movies);
+  const { movies, sortState } = useSelector(stateSelector);
+  const sortedMovies = sortUtil(movies, sortState.field, sortState.order);
 
   const dispatch = useDispatch();
 
