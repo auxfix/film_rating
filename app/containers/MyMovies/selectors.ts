@@ -10,5 +10,9 @@ const makeSelectMyMovies = () =>
   createSelector(selectMyMoviesState, substate => {
     return substate.movies;
   });
+const makeSelectMyMoviesSort = () =>
+  createSelector(selectMyMoviesState, substate => {
+    return substate.sort;
+  });
 
 export { selectMyMoviesState, makeSelectMyMovies };

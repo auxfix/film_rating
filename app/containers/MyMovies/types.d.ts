@@ -6,6 +6,12 @@ interface MyMovieListItemType {
   Title: string;
   imdbID: string;
   rating: number;
+  sort: SortState;
+}
+
+interface SortState {
+  order: string;
+  field: string;
 }
 
 export { MyMovieListItemType };
@@ -14,6 +20,7 @@ export { MyMovieListItemType };
 
 interface MyMoviesState {
   readonly movies: MyMovieListItemType[];
+  readonly sort: SortState;
 }
 
 /* --- ACTIONS --- */
