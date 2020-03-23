@@ -11,7 +11,7 @@ interface Props {
 function Poster(props: Props) {
   const { src } = props;
   return (
-    !!src ? (<Img src={props.src} />) :
+    src !== 'N/A' ? (<Img src={props.src} />) :
       (
         <NoImage>
           <FormattedMessage {...messages.noPosterImage} />

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import StarRatingComponent from 'react-star-rating-component';
 import { Flex, Box } from '@rebass/grid';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -14,15 +15,18 @@ import saga from './saga';
 import Poster from './components/Poster';
 import Button from 'components/Button';
 import messages from './messages';
-import { FormattedMessage } from 'react-intl';
+import H1 from 'components/H1';
+import Detail from './components/Detail';
 
 const key = 'movieDetails';
+const intlScope = 'boilerplate.containers.MovieDetails.';
 
 const stateSelector = createStructuredSelector({
   detailsState: selectDetailsState(),
 });
 
-export default function MovieDetails(props) {
+function MovieDetails(props) {
+  const { formatMessage } = props.intl;
   const { detailsState : {
     movieDetails,
     ratingWasChanged: ratingWasChangedFlag,
@@ -85,15 +89,37 @@ export default function MovieDetails(props) {
       </Box>
       <Box
         width={2 / 3}
+        mx={2}
       >
-        <div>{movieDetails.imdbID}</div>
-        <div>{movieDetails.Title}</div>
-        <div>{movieDetails.Year}</div>
-        <div>{movieDetails.Released}</div>
-        <div>{movieDetails.Genre}</div>
-        <div>{movieDetails.Title}</div>
-        <div>{movieDetails.Type}</div>
+        <Box
+          mb={3}
+        >
+          <H1>{movieDetails.Title}</H1>
+        </Box>
+
+        <Detail
+          label={formatMessage({ id: `${intlScope}imdb`})}
+          detail={movieDetails.imdbID}
+        />
+        <Detail
+          label={formatMessage({ id: `${intlScope}Year`})}
+          detail={movieDetails.Year}
+        />
+        <Detail
+          label={formatMessage({ id: `${intlScope}Released`})}
+          detail={movieDetails.Released}
+        />
+        <Detail
+          label={formatMessage({ id: `${intlScope}Genre`})}
+          detail={movieDetails.Genre}
+        />
+        <Detail
+          label={formatMessage({ id: `${intlScope}Type`})}
+          detail={movieDetails.Type}
+        />
       </Box>
     </Flex>
   );
 }
+
+export default injectIntl(MovieDetails);

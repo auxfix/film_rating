@@ -6,5 +6,11 @@
   "boilerplate.containers.MoviesSearch.Search": "Поиск",
 
   "boilerplate.containers.MovieDetails.saveRating": "Сохранить рейтинг",
+  "boilerplate.containers.MovieDetails.imdb": "imdb",
+  "boilerplate.containers.MovieDetails.Year": "Год",
+  "boilerplate.containers.MovieDetails.Released": "Дата релиза",
+  "boilerplate.containers.MovieDetails.Genre": "Жанр",
+  "boilerplate.containers.MovieDetails.Title": "Тайтл",
+  "boilerplate.containers.MovieDetails.Type": "Тип",
   "boilerplate.containers.Poster.noImage": "нет постера"
 }
