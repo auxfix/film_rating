@@ -1,8 +1,20 @@
 import ActionTypes from './constants';
 import { ContainerActions, ContainerState, MovieDetails } from './types';
 
+export const EmptyMovieDetails = {
+    imdbID: '',
+    rating: 0,
+    Title: '',
+    Country: '',
+    Genre: '',
+    Poster: '',
+    Released: '',
+    Type: '',
+    Year: '',
+};
+
 export const initialState: ContainerState = {
-  movieDetails: undefined,
+  movieDetails: EmptyMovieDetails,
   ratingWasChanged: false,
 };
 
@@ -23,7 +35,7 @@ function searchMovieReducer(
         ratingWasChanged: true,
         movieDetails: {
           ...state.movieDetails,
-          raiting: action.payload,
+          rating: action.payload,
         },
       };
     case ActionTypes.RATING_WAS_SAVED:

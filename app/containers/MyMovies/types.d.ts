@@ -1,12 +1,19 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { ApplicationRootState } from 'types';
-import { MovieDetails } from '../MovieDetails/types';
+
+interface MyMovieListItemType {
+  Title: string;
+  imdbID: string;
+  rating: number;
+}
+
+export { MyMovieListItemType };
 
 /* --- STATE --- */
 
 interface MyMoviesState {
-  readonly movies: MovieDetails[];
+  readonly movies: MyMovieListItemType[];
 }
 
 /* --- ACTIONS --- */

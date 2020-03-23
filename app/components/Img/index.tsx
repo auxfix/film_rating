@@ -1,19 +1,12 @@
-/**
- *
- * Img.js
- *
- * Renders an image, enforcing the usage of the alt="" tag
- */
-
 import * as React from 'react';
 
 interface Props {
-  src: string | object;
+  src: string;
   alt?: string;
   className?: string;
 }
 function Img(props: Props) {
-  return <img className={props.className} src={props.src as string} alt={props.alt} />;
+  return <img className={props.className} src={props.src} alt={props.alt} />;
 }
 
 export default Img;

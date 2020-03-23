@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import StarRatingComponent from 'react-star-rating-component';
+import { Flex, Box } from '@rebass/grid';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -9,7 +11,10 @@ import { selectDetailsState } from 'containers/MovieDetails/selectors';
 import { getMovieDetails, ratingWasChanged, saveRating } from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import Dropdown from 'react-dropdown';
+import Poster from './components/Poster';
+import Button from 'components/Button';
+import messages from './messages';
+import { FormattedMessage } from 'react-intl';
 
 const key = 'movieDetails';
 
@@ -33,15 +38,18 @@ export default function MovieDetails(props) {
     dispatch(getMovieDetails(props.match.params.id));
   }, []);
 
-  const changeRating = (rating) => {
-    if (rating.value) {
-      const parsedRating = Number.parseInt(rating.value, 10);
+  const changeRating = (nextValue, prevValue, name) => {
+    if (nextValue) {
+      const parsedRating = nextValue;
       dispatch(ratingWasChanged(parsedRating));
     }
   };
 
   return (
-    <article>
+    <Flex
+      width={1}
+      pt={2}
+    >
       <Helmet>
         <title>Movie details</title>
         <meta
@@ -49,22 +57,43 @@ export default function MovieDetails(props) {
           content="movie details page"
         />
       </Helmet>
-      Movie details
-      <div>{movieDetails && movieDetails.imdbID}</div>
-      <div>{movieDetails && movieDetails.Title}</div>
-      <div>
-        <Dropdown
-          options={['1', '2', '3', '4', '5']}
-          onChange={changeRating}
-          placeholder={'no rating'}
-          value={(movieDetails && movieDetails.raiting && movieDetails.raiting.toString()) || ''}
-        />
-      </div>
-      <div>
-        {ratingWasChangedFlag && (
-          <button onClick={() => dispatch(saveRating())}>save rating</button>
-        )}
-      </div>
-    </article>
+      <Box
+        width={1 / 3}
+      >
+        <Box
+          p={1}
+        >
+          <Poster
+            src={movieDetails.Poster}
+          />
+        </Box>
+        <div style={{fontSize: 59}}>
+          <StarRatingComponent
+            name="rate1"
+            starCount={5}
+            value={movieDetails.rating || 0}
+            onStarClick={changeRating}
+          />
+        </div>
+        <div>
+          {ratingWasChangedFlag && (
+            <Button onClick={() => dispatch(saveRating())}>
+              <FormattedMessage {...messages.saveRating} />
+            </Button>
+          )}
+        </div>
+      </Box>
+      <Box
+        width={2 / 3}
+      >
+        <div>{movieDetails.imdbID}</div>
+        <div>{movieDetails.Title}</div>
+        <div>{movieDetails.Year}</div>
+        <div>{movieDetails.Released}</div>
+        <div>{movieDetails.Genre}</div>
+        <div>{movieDetails.Title}</div>
+        <div>{movieDetails.Type}</div>
+      </Box>
+    </Flex>
   );
 }

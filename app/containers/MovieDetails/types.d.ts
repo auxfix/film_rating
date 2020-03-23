@@ -3,16 +3,22 @@ import * as actions from './actions';
 import { ApplicationRootState } from 'types';
 
 export interface MovieDetails {
-  imdbID?: string;
-  Title?: string;
-  raiting?: number;
+  imdbID: string;
+  Title: string;
+  rating: number;
+  Year: string;
+  Released: string;
+  Genre: string;
+  Country: string;
+  Poster: string;
+  Type: string;
 }
 
 
 /* --- STATE --- */
 
 interface MovieDetailState {
-  readonly movieDetails?: MovieDetails;
+  readonly movieDetails: MovieDetails;
   readonly ratingWasChanged: boolean;
 }
 

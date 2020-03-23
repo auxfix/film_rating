@@ -1,5 +1,6 @@
-import { MovieDetails } from '../containers/MovieDetails/types';
-import GlobalConstants from '../globalConstants';
+import { MovieDetails } from 'containers/MovieDetails/types';
+import GlobalConstants from 'globalConstants';
+import { MyMovieListItemType } from 'containers/MyMovies/types';
 
 const { myMoviesStorageName } = GlobalConstants;
 
@@ -16,7 +17,7 @@ export default class MyMovie {
         if (foundIndex === -1) {
           allMyMovies.push(movie);
         } else {
-          allMyMovies[foundIndex].raiting = movie.raiting;
+          allMyMovies[foundIndex].rating = movie.rating;
         }
         myMovies = allMyMovies;
       }
@@ -41,7 +42,7 @@ export default class MyMovie {
     });
   }
 
-  public static getMyMovies(): Promise<MovieDetails[]> {
+  public static getMyMovies(): Promise<MyMovieListItemType[]> {
     return new Promise<MovieDetails[]>((resolve) => {
       const myMoviesRawData = localStorage.getItem(myMoviesStorageName);
       if (!myMoviesRawData) {

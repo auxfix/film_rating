@@ -3,7 +3,10 @@
   "movieRatingSystem.components.Header.MyMovies": "My Movies",
   "movieRatingSystem.components.Footer.about.message": "Movie rating system",
 
-  "boilerplate.containers.MoviesSearch.Search": "Search"
+  "boilerplate.containers.MoviesSearch.Search": "Search",
+
+  "boilerplate.containers.MovieDetails.saveRating": "Save Rating",
+  "boilerplate.containers.Poster.noImage": "no image"
 }
 
 

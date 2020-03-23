@@ -11,7 +11,7 @@ export function* getMovieDetails(action) {
     const details = yield call(API.MovieDB.getMovieDetails, action.payload);
     const myMovieDetails = yield call(API.MyMovie.getMyMovieById, action.payload);
     if (myMovieDetails) {
-      details.raiting = myMovieDetails.raiting;
+      details.rating = myMovieDetails.rating;
     }
     yield put(detailsLoaded(details || undefined));
   } catch (err) {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { MovieDetails } from 'containers/MovieDetails/types';
+import { MyMovieListItemType } from '../types';
 
 interface Props {
-  movie: MovieDetails;
+  movie: MyMovieListItemType;
   onMovieClick: (id: string | undefined) => void;
 }
 
@@ -10,7 +10,7 @@ function MyMovieListItem(props: Props) {
   return (
     <div onClick={() => props.onMovieClick(props.movie.imdbID)}>
       <div>{props.movie.Title}</div>
-      <div>{props.movie.raiting}</div>
+      <div>{props.movie.rating}</div>
     </div>
   );
 }
