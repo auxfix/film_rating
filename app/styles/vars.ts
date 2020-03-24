@@ -5,7 +5,4 @@ const colors = {
   background: '#fafafa',
 };
 
-
-export {
-  colors,
-};
+export { colors };

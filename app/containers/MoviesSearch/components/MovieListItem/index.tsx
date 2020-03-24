@@ -9,11 +9,7 @@ interface Props {
 function MovieListItem(props: Props) {
   const { movie, onMovieClick } = props;
   return (
-    <Wrapper
-      onClick={() => onMovieClick(movie.imdbID)}
-    >
-      {movie.Title}
-    </Wrapper>
+    <Wrapper onClick={() => onMovieClick(movie.imdbID)}>{movie.Title}</Wrapper>
   );
 }
 

@@ -22,7 +22,6 @@ const Component = () => null;
 
 const reducer = s => s;
 
-
 describe('injectReducer decorator', () => {
   let store;
   let ComponentWithReducer;
@@ -69,12 +68,13 @@ describe('injectReducer decorator', () => {
 
   it('should propagate props', () => {
     const props = { testProp: 'test' };
-    const renderedComponent = renderer.create(
-      // tslint:disable-next-line:jsx-wrap-multiline
-      <Provider store={store}>
-        <ComponentWithReducer {...props} />
-      </Provider>,
-    )
+    const renderedComponent = renderer
+      .create(
+        // tslint:disable-next-line:jsx-wrap-multiline
+        <Provider store={store}>
+          <ComponentWithReducer {...props} />
+        </Provider>,
+      )
       .getInstance()!;
 
     const {

@@ -12,13 +12,9 @@ function Detail(props: Props) {
   const { label, detail } = props;
   return (
     <Wrapper>
-      <Flex
-        alignItems="center"
-        width={1}
-        justifyContent="space-between"
-      >
-          <Label>{label}</Label>
-          <Text>{detail}</Text>
+      <Flex alignItems="center" width={1} justifyContent="space-between">
+        <Label>{label}</Label>
+        <Text>{detail}</Text>
       </Flex>
     </Wrapper>
   );

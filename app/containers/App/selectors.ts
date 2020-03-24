@@ -5,10 +5,9 @@ const selectGlobal = (state: ApplicationRootState) => {
   return state.global;
 };
 const makeSelectLoading = () =>
-  createSelector(selectGlobal, globalState => globalState.loading);
+  createSelector(
+    selectGlobal,
+    globalState => globalState.loading,
+  );
 
-
-export {
-  selectGlobal,
-  makeSelectLoading,
-};
+export { selectGlobal, makeSelectLoading };

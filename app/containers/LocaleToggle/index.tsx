@@ -15,7 +15,6 @@ import { appLocales } from '../../i18n';
 import { changeLocale } from '../LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 
-
 const stateSelector = createSelector(
   makeSelectLocale(),
   locale => ({
@@ -30,11 +29,7 @@ export default function LocaleToggle() {
   const onLocaleToggle = option => dispatch(changeLocale(option.value));
   return (
     <Wrapper>
-      <Dropdown
-        options={appLocales}
-        onChange={onLocaleToggle}
-        value={locale}
-      />
+      <Dropdown options={appLocales} onChange={onLocaleToggle} value={locale} />
     </Wrapper>
   );
 }

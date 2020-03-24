@@ -11,7 +11,6 @@ interface AppState {
 /* --- ACTIONS --- */
 type AppActions = ActionType<typeof actions>;
 
-
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;

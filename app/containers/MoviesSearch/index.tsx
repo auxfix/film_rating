@@ -11,7 +11,12 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectLoading } from 'containers/App/selectors';
 import { changeMovieName, loadMovies } from './actions';
 import BigInput from 'components/BigInput';
-import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults, makeSelectError } from './selectors';
+import {
+  makeSelectSearchName,
+  makeSelectMovies,
+  makeSelectTotalResults,
+  makeSelectError,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { MovieListItemType } from './components/MovieListItem/types';
@@ -22,25 +27,24 @@ import Pagination from 'components/Pagination';
 
 function getError(err: string) {
   return (
-    <Flex
-      width={1}
-      justifyContent="center"
-    >
+    <Flex width={1} justifyContent="center">
       {err}
     </Flex>
   );
 }
 
 function getMoviesList(mvs: MovieListItemType[], dispatch) {
-  return mvs && mvs.map((mv: MovieListItemType) => (
-    <MovieItem
-      key={mv.imdbID}
-      movie={mv}
-      onMovieClick={(id) => dispatch(push(`/details/${id}`))}
-    />
-  ));
+  return (
+    mvs &&
+    mvs.map((mv: MovieListItemType) => (
+      <MovieItem
+        key={mv.imdbID}
+        movie={mv}
+        onMovieClick={id => dispatch(push(`/details/${id}`))}
+      />
+    ))
+  );
 }
-
 
 const key = 'movieSearch';
 
@@ -53,10 +57,13 @@ const stateSelector = createStructuredSelector({
 });
 
 export default function MovieSearch() {
-  const { movies, searchName, error, totalResults } = useSelector(stateSelector);
+  const { movies, searchName, error, totalResults } = useSelector(
+    stateSelector,
+  );
   const dispatch = useDispatch();
 
-  const onChangeMovieName = (searchString) => dispatch(changeMovieName(searchString));
+  const onChangeMovieName = searchString =>
+    dispatch(changeMovieName(searchString));
   const onMakeSearch = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
       evt.preventDefault();
@@ -74,52 +81,31 @@ export default function MovieSearch() {
   }, []);
 
   return (
-    <Flex
-      flexDireaction={'column'}
-      width={1}
-    >
+    <Flex flexDireaction={'column'} width={1}>
       <Helmet>
         <title>Movies Search</title>
-        <meta
-          name="description"
-          content="Movies search page"
-        />
+        <meta name="description" content="Movies search page" />
       </Helmet>
-      <Flex
-        width={1}
-        flexDirection={'column'}
-        justifyContent={'space-between'}
-      >
-        <Box
-          width={1}
-        >
-          <Box
-            mt={4}
-          >
+      <Flex width={1} flexDirection={'column'} justifyContent={'space-between'}>
+        <Box width={1}>
+          <Box mt={4}>
             <BigInput
               onChangeText={onChangeMovieName}
               value={searchName}
               onPressEnter={onMakeSearch}
             />
           </Box>
-          <Flex
-            w={1}
-            py={2}
-            justifyContent={'flex-end'}
-          >
+          <Flex w={1} py={2} justifyContent={'flex-end'}>
             <Button onClick={onMakeSearch}>
               <FormattedMessage {...messages.Search} />
             </Button>
           </Flex>
           {!!error ? getError(error) : getMoviesList(movies, dispatch)}
         </Box>
-        <Flex
-          w={1}
-          justifyContent="center"
-        >
+        <Flex w={1} justifyContent="center">
           <Pagination
             pageCount={Math.ceil(totalResults / 10)}
-            onPageChange={(page) => {
+            onPageChange={page => {
               dispatch(loadMovies(page));
             }}
             marginPagesDisplayed={2}

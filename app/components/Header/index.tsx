@@ -17,7 +17,7 @@ function Header() {
           <FormattedMessage {...messages.myMovies} />
         </HeaderLink>
       </div>
-      <LocaleToggle/>
+      <LocaleToggle />
     </Wrapper>
   );
 }

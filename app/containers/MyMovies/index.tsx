@@ -8,7 +8,11 @@ import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectMyMovies, makeSelectMyMoviesSort, makeSelectMyMoviesError } from './selectors';
+import {
+  makeSelectMyMovies,
+  makeSelectMyMoviesSort,
+  makeSelectMyMoviesError,
+} from './selectors';
 import { getMyMovies, changeSorting } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -42,55 +46,40 @@ export default function HomePage() {
 
   if (!!error) {
     return (
-      <Flex
-        width={1}
-        pt={5}
-        justifyContent="center"
-      >
+      <Flex width={1} pt={5} justifyContent="center">
         {error}
       </Flex>
     );
   }
 
   return (
-    <Flex
-      flexDirection="column"
-      width={1}
-    >
+    <Flex flexDirection="column" width={1}>
       <Helmet>
         <title>My Movies</title>
-        <meta
-          name="description"
-          content="My Movies page"
-        />
+        <meta name="description" content="My Movies page" />
       </Helmet>
-      <Box
-        mt="2"
-      >
+      <Box mt="2">
         <PageName>
           <FormattedMessage {...messages.myMovies} />
         </PageName>
       </Box>
-      <Box
-        mt="2"
-      >
+      <Box mt="2">
         <MoviesSortHeader
           filed={sortState.field}
           order={sortState.order}
-          onClickHandler={
-            (field, order) => dispatch(changeSorting(field, order))
+          onClickHandler={(field, order) =>
+            dispatch(changeSorting(field, order))
           }
         />
       </Box>
       <MoviesList>
-        {
-          sortedMovies.map(mv => (
-            <MyMovieListItem
-              key={mv.imdbID}
-              onMovieClick={(id) => dispatch(push(`/details/${id}`))}
-              movie={mv}
-          />))
-        }
+        {sortedMovies.map(mv => (
+          <MyMovieListItem
+            key={mv.imdbID}
+            onMovieClick={id => dispatch(push(`/details/${id}`))}
+            movie={mv}
+          />
+        ))}
       </MoviesList>
     </Flex>
   );

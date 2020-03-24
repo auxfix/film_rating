@@ -8,7 +8,10 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectDetailsState, makeSelectMovieDetailsError } from 'containers/MovieDetails/selectors';
+import {
+  selectDetailsState,
+  makeSelectMovieDetailsError,
+} from 'containers/MovieDetails/selectors';
 import { getMovieDetails, ratingWasChanged, saveRating } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -29,10 +32,7 @@ const stateSelector = createStructuredSelector({
 function MovieDetails(props) {
   const { formatMessage } = props.intl;
   const {
-    detailsState : {
-        movieDetails,
-        ratingWasChanged: ratingWasChangedFlag,
-      },
+    detailsState: { movieDetails, ratingWasChanged: ratingWasChangedFlag },
     error,
   } = useSelector(stateSelector);
 
@@ -54,39 +54,23 @@ function MovieDetails(props) {
 
   if (!!error) {
     return (
-      <Flex
-        width={1}
-        pt={5}
-        justifyContent="center"
-      >
+      <Flex width={1} pt={5} justifyContent="center">
         {error}
       </Flex>
     );
   }
 
   return (
-    <Flex
-      width={1}
-      pt={2}
-    >
+    <Flex width={1} pt={2}>
       <Helmet>
         <title>Movie details</title>
-        <meta
-          name="description"
-          content="movie details page"
-        />
+        <meta name="description" content="movie details page" />
       </Helmet>
-      <Box
-        width={1 / 3}
-      >
-        <Box
-          p={1}
-        >
-          <Poster
-            src={movieDetails.Poster}
-          />
+      <Box width={1 / 3}>
+        <Box p={1}>
+          <Poster src={movieDetails.Poster} />
         </Box>
-        <div style={{fontSize: 59}}>
+        <div style={{ fontSize: 59 }}>
           <StarRatingComponent
             name="rate1"
             starCount={5}
@@ -102,34 +86,29 @@ function MovieDetails(props) {
           )}
         </div>
       </Box>
-      <Box
-        width={2 / 3}
-        mx={2}
-      >
-        <Box
-          mb={3}
-        >
+      <Box width={2 / 3} mx={2}>
+        <Box mb={3}>
           <H1>{movieDetails.Title}</H1>
         </Box>
 
         <Detail
-          label={formatMessage({ id: `${intlScope}imdb`})}
+          label={formatMessage({ id: `${intlScope}imdb` })}
           detail={movieDetails.imdbID}
         />
         <Detail
-          label={formatMessage({ id: `${intlScope}Year`})}
+          label={formatMessage({ id: `${intlScope}Year` })}
           detail={movieDetails.Year}
         />
         <Detail
-          label={formatMessage({ id: `${intlScope}Released`})}
+          label={formatMessage({ id: `${intlScope}Released` })}
           detail={movieDetails.Released}
         />
         <Detail
-          label={formatMessage({ id: `${intlScope}Genre`})}
+          label={formatMessage({ id: `${intlScope}Genre` })}
           detail={movieDetails.Genre}
         />
         <Detail
-          label={formatMessage({ id: `${intlScope}Type`})}
+          label={formatMessage({ id: `${intlScope}Type` })}
           detail={movieDetails.Type}
         />
       </Box>

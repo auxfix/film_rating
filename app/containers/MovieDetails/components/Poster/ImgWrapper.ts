@@ -1,7 +1,6 @@
 import styled from 'styles/styled-components';
 import { colors } from 'styles/vars';
 
-
 export default styled.div`
   width: 100%;
   min-height: 150px;

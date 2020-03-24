@@ -14,7 +14,6 @@ export interface MovieDetails {
   Type: string;
 }
 
-
 /* --- STATE --- */
 
 interface MovieDetailState {
@@ -25,7 +24,6 @@ interface MovieDetailState {
 
 /* --- ACTIONS --- */
 type MovieDetailsActions = ActionType<typeof actions>;
-
 
 /* --- EXPORTS --- */
 

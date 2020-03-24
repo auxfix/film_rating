@@ -2,7 +2,6 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import './paging-styles.css';
 
-
 export interface Props {
   pageCount: number;
   onPageChange: (page: number) => void;
@@ -11,7 +10,6 @@ export interface Props {
 }
 
 function Pagination(props: Props) {
-
   const {
     pageCount,
     onPageChange,
@@ -22,7 +20,7 @@ function Pagination(props: Props) {
   return (
     <ReactPaginate
       pageCount={pageCount}
-      onPageChange={(data) => onPageChange(data.selected + 1)}
+      onPageChange={data => onPageChange(data.selected + 1)}
       previousLabel={'<'}
       nextLabel={'>'}
       breakLabel={'...'}
@@ -33,7 +31,7 @@ function Pagination(props: Props) {
       subContainerClassName={'pages pagination'}
       activeClassName={'active'}
     />
-      );
+  );
 }
 
 export default Pagination;

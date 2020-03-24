@@ -1,23 +1,17 @@
 import React from 'react';
 import Input from './Input';
 
-
-
 export interface Props {
   onPressEnter?: (text: string) => void;
   onChangeText: (text: string) => void;
   value: string;
+  placeholder?: string;
 }
 
 function BigInput(props: Props) {
+  const { onChangeText, onPressEnter, value, placeholder } = props;
 
-  const {
-    onChangeText,
-    onPressEnter,
-    value,
-  } = props;
-
-  const handleKeyPress = (event) => {
+  const handleKeyPress = event => {
     if (event.key === 'Enter') {
       if (onPressEnter) {
         onPressEnter(value);
@@ -25,14 +19,13 @@ function BigInput(props: Props) {
     }
   };
 
-
   return (
     <Input
       value={value}
       onKeyPress={handleKeyPress}
-      onChange={(evt) => onChangeText(evt.target.value)}
+      placeholder={placeholder}
+      onChange={evt => onChangeText(evt.target.value)}
     />
-      );
+  );
 }
-
 export default BigInput;

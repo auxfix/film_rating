@@ -10,9 +10,7 @@ interface Props {
 function MyMovieListItem(props: Props) {
   const { movie, onMovieClick } = props;
   return (
-    <Wrapper
-      onClick={() => onMovieClick(movie.imdbID)}
-    >
+    <Wrapper onClick={() => onMovieClick(movie.imdbID)}>
       <span>{movie.Title}</span>
       <StarRatingComponent
         name="rate1"

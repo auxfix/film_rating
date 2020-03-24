@@ -18,7 +18,6 @@ import { useSelector } from 'react-redux';
 import { useInjectReducer } from 'utils/injectReducer';
 import reducer from './reducer';
 
-
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
@@ -53,7 +52,7 @@ export default function App() {
         <meta name="description" content="Film Rating System" />
       </Helmet>
       <Header />
-      {loading && <LoadingOverlay/>}
+      {loading && <LoadingOverlay />}
       <ContentWrapper>
         <Switch>
           <Route exact path="/" component={MoviesSearch} />

@@ -14,18 +14,14 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 `;
 
 export default function LoadingOverlay() {
   return (
     <Overlay>
-      <CircleLoader
-        size={150}
-        color={colors.blue}
-        loading={true}
-      />
+      <CircleLoader size={150} color={colors.blue} loading={true} />
     </Overlay>
   );
 }

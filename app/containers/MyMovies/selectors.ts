@@ -7,17 +7,26 @@ const selectMyMoviesState = (state: ApplicationRootState) => {
 };
 
 const makeSelectMyMovies = () =>
-  createSelector(selectMyMoviesState, substate => {
-    return substate.movies;
-  });
+  createSelector(
+    selectMyMoviesState,
+    substate => {
+      return substate.movies;
+    },
+  );
 const makeSelectMyMoviesSort = () =>
-  createSelector(selectMyMoviesState, substate => {
-    return substate.sort;
-  });
+  createSelector(
+    selectMyMoviesState,
+    substate => {
+      return substate.sort;
+    },
+  );
 const makeSelectMyMoviesError = () =>
-  createSelector(selectMyMoviesState, substate => {
-    return substate.error;
-  });
+  createSelector(
+    selectMyMoviesState,
+    substate => {
+      return substate.error;
+    },
+  );
 
 export {
   selectMyMoviesState,

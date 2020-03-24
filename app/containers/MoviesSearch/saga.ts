@@ -12,17 +12,23 @@ export function* getFilms(action) {
   try {
     yield put(setLoading(true));
     if (!!moviename.trim()) {
-      const searchResults = yield call(API.MovieDB.getMoviesByName, moviename, action.payload.page);
+      const searchResults = yield call(
+        API.MovieDB.getMoviesByName,
+        moviename,
+        action.payload.page,
+      );
       if (searchResults.Response === 'True') {
         yield put(moviesLoaded(searchResults));
       } else {
         yield put(moviesLoadingError(searchResults.Error));
       }
     } else {
-      yield put(moviesLoaded({
-        Search: [],
-        totalResults: 0,
-      }));
+      yield put(
+        moviesLoaded({
+          Search: [],
+          totalResults: 0,
+        }),
+      );
     }
     yield put(setLoading(false));
   } catch (err) {
@@ -30,8 +36,6 @@ export function* getFilms(action) {
     yield put(setLoading(false));
   }
 }
-
-
 
 export default function* moviesSearchData() {
   yield takeLatest(ActionTypes.LOAD_MOVIES, getFilms);

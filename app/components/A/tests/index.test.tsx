@@ -1,7 +1,3 @@
-/**
- * Testing our link component
- */
-
 import React from 'react';
 import { render } from '@testing-library/react';
 
@@ -10,10 +6,8 @@ import A from '../index';
 const href = 'http://mxstbr.com/';
 const children = <h1>Test</h1>;
 const renderComponent = (props = {}) => {
-  const utils = render(
-    <A href={href} {...props}>{children}</A>,
-  );
-  const link = utils.container.querySelector('a')!;
+  const utils = render(<A href={href} {...props}>{children} </A>);
+  const link = utils.container.querySelector('a');
   return { ...utils, link };
 };
 
@@ -30,7 +24,7 @@ describe('<A />', () => {
 
   it('should have children', () => {
     const { link } = renderComponent();
-    expect(link.children).toHaveLength(1);
+    expect(link && link.children).toHaveLength(1);
   });
 
   it('should have a class attribute', () => {

@@ -8,25 +8,17 @@ import { colors } from 'styles/vars';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { FormattedMessage } from 'react-intl';
 
-
-function ImgWithLoading(props: {src: string}) {
-  const [ loading, setLoading ] = useState(true);
+function ImgWithLoading(props: { src: string }) {
+  const [loading, setLoading] = useState(true);
 
   return (
     <ImgWrapper>
-      <Img
-        src={props.src}
-        onLoad={() => setLoading(false)}
-      />
+      <Img src={props.src} onLoad={() => setLoading(false)} />
       {loading && (
         <NoImageWrapper>
-          <CircleLoader
-            size={90}
-            color={colors.blue}
-            loading={true}
-          />
-        </NoImageWrapper>)
-      }
+          <CircleLoader size={90} color={colors.blue} loading={true} />
+        </NoImageWrapper>
+      )}
     </ImgWrapper>
   );
 }
@@ -36,15 +28,12 @@ interface Props {
 }
 function Poster(props: Props) {
   const { src } = props;
-  return (
-    src !== 'N/A' ? (
-        <ImgWithLoading src={src}/>
-      ) :
-      (
-        <NoImage>
-          <FormattedMessage {...messages.noPosterImage} />
-        </NoImage>
-      )
+  return src !== 'N/A' ? (
+    <ImgWithLoading src={src} />
+  ) : (
+    <NoImage>
+      <FormattedMessage {...messages.noPosterImage} />
+    </NoImage>
   );
 }
 

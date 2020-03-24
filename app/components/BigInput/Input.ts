@@ -5,7 +5,7 @@ const Input = styled.input`
   outline: none;
   background-color: transparent;
   padding: 0.25em 2em;
-  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 20px;
   width: 100%;

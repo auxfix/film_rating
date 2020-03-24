@@ -6,14 +6,22 @@ const selectDetails = (state: ApplicationRootState) => {
   return state.movieDetails || initialState;
 };
 
-const selectDetailsState = () => createSelector(selectDetails, st => st);
+const selectDetailsState = () =>
+  createSelector(
+    selectDetails,
+    st => st,
+  );
 
 const makeSelectMovieDetails = () =>
-  createSelector(selectDetails, substate =>
-    substate.movieDetails);
+  createSelector(
+    selectDetails,
+    substate => substate.movieDetails,
+  );
 const makeSelectMovieDetailsError = () =>
-  createSelector(selectDetails, substate =>
-    substate.error);
+  createSelector(
+    selectDetails,
+    substate => substate.error,
+  );
 
 export {
   selectDetails,
@@ -21,5 +29,3 @@ export {
   selectDetailsState,
   makeSelectMovieDetailsError,
 };
-
-

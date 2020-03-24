@@ -8,7 +8,10 @@ import createReducer from '../reducers';
 import { InjectedStore } from 'types';
 import { Reducer } from 'redux';
 
-export function injectReducerFactory(store: InjectedStore, isValid: boolean = false) {
+export function injectReducerFactory(
+  store: InjectedStore,
+  isValid: boolean = false,
+) {
   // tslint:disable-next-line: only-arrow-functions
   return function injectReducer(key: string, reducer: Reducer<object>) {
     if (!isValid) {

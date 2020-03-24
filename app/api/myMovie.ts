@@ -6,14 +6,16 @@ const { myMoviesStorageName } = GlobalConstants;
 
 export default class MyMovie {
   public static saveMyMovie(movie: MovieDetails): Promise<boolean> {
-    return new Promise<boolean>((resolve) => {
+    return new Promise<boolean>(resolve => {
       const myMoviesRawData = localStorage.getItem(myMoviesStorageName);
       let myMovies: MovieDetails[];
       if (!myMoviesRawData) {
         myMovies = [movie];
       } else {
         const allMyMovies: MovieDetails[] = JSON.parse(myMoviesRawData);
-        const foundIndex = allMyMovies.findIndex(mv => mv.imdbID === movie.imdbID);
+        const foundIndex = allMyMovies.findIndex(
+          mv => mv.imdbID === movie.imdbID,
+        );
         if (foundIndex === -1) {
           allMyMovies.push(movie);
         } else {
@@ -29,7 +31,7 @@ export default class MyMovie {
   }
 
   public static getMyMovieById(id: string): Promise<MovieDetails | null> {
-    return new Promise<MovieDetails | null>((resolve) => {
+    return new Promise<MovieDetails | null>(resolve => {
       const myMoviesRawData = localStorage.getItem(myMoviesStorageName);
       if (!myMoviesRawData) {
         resolve(null);
@@ -38,12 +40,11 @@ export default class MyMovie {
         const foundMovie = myMovies.find(mv => mv.imdbID === id);
         resolve(foundMovie);
       }
-
     });
   }
 
   public static getMyMovies(): Promise<MyMovieListItemType[]> {
-    return new Promise<MyMovieListItemType[]>((resolve) => {
+    return new Promise<MyMovieListItemType[]>(resolve => {
       const myMoviesRawData = localStorage.getItem(myMoviesStorageName);
       if (!myMoviesRawData) {
         resolve([]);

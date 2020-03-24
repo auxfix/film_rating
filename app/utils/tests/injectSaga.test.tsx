@@ -12,7 +12,6 @@ import configureStore from '../../configureStore';
 import injectSaga, { useInjectSaga } from '../injectSaga';
 import { getInjectors } from '../sagaInjectors';
 
-
 import { createMemoryHistory } from 'history';
 import { InjectedStore } from '../../types';
 
@@ -91,12 +90,13 @@ describe('injectSaga decorator', () => {
 
   it('should propagate props', () => {
     const props = { testProp: 'test' };
-    const renderedComponent = renderer.create(
-      // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
-      </Provider>,
-    )
+    const renderedComponent = renderer
+      .create(
+        // tslint:disable-next-line: jsx-wrap-multiline
+        <Provider store={store}>
+          <ComponentWithSaga {...props} />
+        </Provider>,
+      )
       .getInstance()!;
 
     const {
@@ -115,7 +115,8 @@ describe('useInjectSaga hook', () => {
     const mockedGetInjectors = (getInjectors as unknown) as jest.Mock<
       typeof getInjectors
     >; // compiler doesn't know that it's mocked. So manually cast it.
-    mockedGetInjectors.mockImplementation(() => injectors);  });
+    mockedGetInjectors.mockImplementation(() => injectors);
+  });
 
   beforeEach(() => {
     store = configureStore({}, memoryHistory);

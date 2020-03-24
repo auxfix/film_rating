@@ -3,7 +3,6 @@ import { myMoviesLoaded, myMoviesLoadedError } from './actions';
 import ActionTypes from './constants';
 import API from 'api';
 
-
 export function* getMyMovies() {
   try {
     const myMovies = yield call(API.MyMovie.getMyMovies);

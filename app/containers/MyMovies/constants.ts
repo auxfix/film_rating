@@ -15,5 +15,3 @@ enum Sort {
 export default ActionTypes;
 
 export { Sort };
-
-

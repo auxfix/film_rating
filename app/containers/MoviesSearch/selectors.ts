@@ -6,23 +6,32 @@ const selectHome = (state: ApplicationRootState) => {
   return state.movieSearch || initialState;
 };
 
-
 const makeSelectMovies = () =>
-  createSelector(selectHome, substate =>
-    substate.movies);
+  createSelector(
+    selectHome,
+    substate => substate.movies,
+  );
 
 const makeSelectTotalResults = () =>
-  createSelector(selectHome, substate =>
-    substate.totalResults);
+  createSelector(
+    selectHome,
+    substate => substate.totalResults,
+  );
 
 const makeSelectSearchName = () =>
-  createSelector(selectHome, substate => {
-    return substate.moviename;
-  });
+  createSelector(
+    selectHome,
+    substate => {
+      return substate.moviename;
+    },
+  );
 const makeSelectError = () =>
-  createSelector(selectHome, substate => {
-    return substate.error;
-  });
+  createSelector(
+    selectHome,
+    substate => {
+      return substate.error;
+    },
+  );
 
 export {
   selectHome,

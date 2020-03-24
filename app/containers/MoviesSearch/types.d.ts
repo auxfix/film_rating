@@ -15,7 +15,6 @@ interface SearchMovies {
 /* --- ACTIONS --- */
 type SearchMoviesActions = ActionType<typeof actions>;
 
-
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;

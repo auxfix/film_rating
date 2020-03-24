@@ -1,7 +1,6 @@
 import styled from 'styles/styled-components';
 import { colors } from 'styles/vars';
 
-
 export default styled.div`
   &:hover {
     background-color: ${colors.blue_hover};
@@ -9,7 +8,7 @@ export default styled.div`
   display: flex;
   min-height: 50px;
   justify-content: flex-start;
-  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   align-items: center;
   font-weight: 500;
   font-size: 20px;

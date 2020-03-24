@@ -27,7 +27,6 @@ interface MyMoviesState {
 /* --- ACTIONS --- */
 type AppActions = ActionType<typeof actions>;
 
-
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;

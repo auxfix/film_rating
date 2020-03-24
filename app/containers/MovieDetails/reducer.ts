@@ -2,15 +2,15 @@ import ActionTypes from './constants';
 import { ContainerActions, ContainerState, MovieDetails } from './types';
 
 export const EmptyMovieDetails = {
-    imdbID: '',
-    rating: 0,
-    Title: '',
-    Country: '',
-    Genre: '',
-    Poster: '',
-    Released: '',
-    Type: '',
-    Year: '',
+  imdbID: '',
+  rating: 0,
+  Title: '',
+  Country: '',
+  Genre: '',
+  Poster: '',
+  Released: '',
+  Type: '',
+  Year: '',
 };
 
 export const initialState: ContainerState = {
@@ -35,7 +35,6 @@ function searchMovieReducer(
         error: action.payload,
       };
     case ActionTypes.RATING_WAS_CHANGED:
-
       return {
         ...state,
         ratingWasChanged: true,
@@ -55,4 +54,3 @@ function searchMovieReducer(
 }
 
 export default searchMovieReducer;
-

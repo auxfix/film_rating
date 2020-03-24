@@ -32,7 +32,6 @@ describe('configureStore', () => {
   });
 });
 
-
 jest.mock('redux-devtools-extension', () => ({
   composeWithDevTools: jest.fn(),
 }));

@@ -30,9 +30,7 @@ describe('<LanguageProvider />', () => {
     const { queryByText } = render(
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store}>
-        <LanguageProvider messages={messages}>
-          {children}
-        </LanguageProvider>
+        <LanguageProvider messages={messages}>{children}</LanguageProvider>
       </Provider>,
     );
     expect(queryByText(text)).toBeInTheDocument();

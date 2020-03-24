@@ -6,7 +6,6 @@ import API from 'api';
 import { makeSelectMovieDetails } from 'containers/MovieDetails/selectors';
 import { EmptyMovieDetails } from './reducer';
 
-
 export function* getMovieDetails(action) {
   try {
     yield put(detailsLoaded(EmptyMovieDetails));
@@ -14,7 +13,10 @@ export function* getMovieDetails(action) {
     if (details.Response === 'False') {
       yield put(detailsLoadedError(details.Error));
     } else {
-      const myMovieDetails = yield call(API.MyMovie.getMyMovieById, action.payload);
+      const myMovieDetails = yield call(
+        API.MyMovie.getMyMovieById,
+        action.payload,
+      );
       if (myMovieDetails) {
         details.rating = myMovieDetails.rating;
       }
@@ -34,7 +36,6 @@ export function* saveMovieDetails() {
     yield put(detailsLoadedError(err));
   }
 }
-
 
 export default function* movieDetailsData() {
   yield takeLatest(ActionTypes.GET_DETAILS, getMovieDetails);
