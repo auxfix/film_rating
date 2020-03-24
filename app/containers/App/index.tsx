@@ -1,11 +1,3 @@
-/**
- *
- * App
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- */
-
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styles/styled-components';
@@ -15,10 +7,17 @@ import MoviesSearch from 'containers/MoviesSearch/Loadable';
 import MovieDetails from 'containers/MovieDetails/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import MyMovies from 'containers/MyMovies/Loadable';
+import LoadingOverlay from 'components/LoadingOverlay';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import GlobalStyle from '../../global-styles';
+import GlobalStyle from 'global-styles';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectLoading } from './selectors';
+import { useSelector } from 'react-redux';
+import { useInjectReducer } from 'utils/injectReducer';
+import reducer from './reducer';
+
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -34,8 +33,17 @@ const ContentWrapper = styled.div`
   flex: 1;
 `;
 
+const key = 'global';
+
+const stateSelector = createStructuredSelector({
+  loading: makeSelectLoading(),
+});
 
 export default function App() {
+  const { loading } = useSelector(stateSelector);
+
+  useInjectReducer({ key: key, reducer: reducer });
+
   return (
     <AppWrapper>
       <Helmet
@@ -45,6 +53,7 @@ export default function App() {
         <meta name="description" content="Film Rating System" />
       </Helmet>
       <Header />
+      {loading && <LoadingOverlay/>}
       <ContentWrapper>
         <Switch>
           <Route exact path="/" component={MoviesSearch} />

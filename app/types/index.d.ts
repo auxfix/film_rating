@@ -31,7 +31,6 @@ export interface ApplicationRootState {
   readonly router: RouterState;
   readonly global: AppState;
   readonly language: LanguageProviderState;
-  readonly home: HomeState;
   readonly movieSearch: MoviesSearch;
   readonly movieDetails: MovieDetails;
   readonly myMovies: MyMovies;
