@@ -8,7 +8,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { selectDetailsState } from 'containers/MovieDetails/selectors';
+import { selectDetailsState, makeSelectMovieDetailsError } from 'containers/MovieDetails/selectors';
 import { getMovieDetails, ratingWasChanged, saveRating } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -23,14 +23,17 @@ const intlScope = 'boilerplate.containers.MovieDetails.';
 
 const stateSelector = createStructuredSelector({
   detailsState: selectDetailsState(),
+  error: makeSelectMovieDetailsError(),
 });
 
 function MovieDetails(props) {
   const { formatMessage } = props.intl;
-  const { detailsState : {
-    movieDetails,
-    ratingWasChanged: ratingWasChangedFlag,
-    },
+  const {
+    detailsState : {
+        movieDetails,
+        ratingWasChanged: ratingWasChangedFlag,
+      },
+    error,
   } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
@@ -48,6 +51,18 @@ function MovieDetails(props) {
       dispatch(ratingWasChanged(parsedRating));
     }
   };
+
+  if (!!error) {
+    return (
+      <Flex
+        width={1}
+        pt={5}
+        justifyContent="center"
+      >
+        {error}
+      </Flex>
+    );
+  }
 
   return (
     <Flex

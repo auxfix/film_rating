@@ -4,18 +4,24 @@ import ActionTypes from './constants';
 import API from 'api';
 
 import { makeSelectMovieDetails } from 'containers/MovieDetails/selectors';
+import { EmptyMovieDetails } from './reducer';
 
 
 export function* getMovieDetails(action) {
   try {
+    yield put(detailsLoaded(EmptyMovieDetails));
     const details = yield call(API.MovieDB.getMovieDetails, action.payload);
-    const myMovieDetails = yield call(API.MyMovie.getMyMovieById, action.payload);
-    if (myMovieDetails) {
-      details.rating = myMovieDetails.rating;
+    if (details.Response === 'False') {
+      yield put(detailsLoadedError(details.Error));
+    } else {
+      const myMovieDetails = yield call(API.MyMovie.getMyMovieById, action.payload);
+      if (myMovieDetails) {
+        details.rating = myMovieDetails.rating;
+      }
+      yield put(detailsLoaded(details || undefined));
     }
-    yield put(detailsLoaded(details || undefined));
   } catch (err) {
-    yield put(detailsLoadedError(err));
+    yield put(detailsLoadedError(err.message));
   }
 }
 

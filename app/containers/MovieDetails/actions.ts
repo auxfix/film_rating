@@ -7,7 +7,7 @@ export const getMovieDetails = (id: string) => action(ActionTypes.GET_DETAILS, i
 
 export const detailsLoaded = (details: MovieDetails) =>
   action(ActionTypes.LOAD_DETAILS_SUCCESS, details);
-export const detailsLoadedError = (error: object) =>
+export const detailsLoadedError = (error: string) =>
   action(ActionTypes.LOAD_DETAILS_ERROR, error);
 
 export const ratingWasChanged = (rating: number) =>

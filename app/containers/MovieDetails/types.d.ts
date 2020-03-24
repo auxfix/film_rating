@@ -20,6 +20,7 @@ export interface MovieDetails {
 interface MovieDetailState {
   readonly movieDetails: MovieDetails;
   readonly ratingWasChanged: boolean;
+  readonly error?: string;
 }
 
 /* --- ACTIONS --- */

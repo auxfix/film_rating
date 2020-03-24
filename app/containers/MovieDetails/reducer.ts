@@ -26,7 +26,13 @@ function searchMovieReducer(
     case ActionTypes.LOAD_DETAILS_SUCCESS:
       return {
         ...state,
+        error: undefined,
         movieDetails: action.payload,
+      };
+    case ActionTypes.LOAD_DETAILS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     case ActionTypes.RATING_WAS_CHANGED:
 
