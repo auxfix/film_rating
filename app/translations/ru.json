@@ -4,6 +4,7 @@
   "movieRatingSystem.components.Footer.about.message": "Система рейтинга фильмов",
 
   "boilerplate.containers.MoviesSearch.Search": "Поиск",
+  "boilerplate.containers.MoviesSearch.enterMovieName": "Введите название фильма",
 
   "boilerplate.containers.MovieDetails.saveRating": "Сохранить рейтинг",
   "boilerplate.containers.MovieDetails.imdb": "imdb",

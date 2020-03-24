@@ -5,6 +5,8 @@
   "movieRatingSystem.components.Footer.about.message": "Movie rating system",
 
   "boilerplate.containers.MoviesSearch.Search": "Search",
+  "boilerplate.containers.MoviesSearch.enterMovieName": "Enter movie name",
+
   "boilerplate.containers.MovieDetails.imdb": "imdb",
   "boilerplate.containers.MovieDetails.Year": "Year",
   "boilerplate.containers.MovieDetails.Released": "Released",

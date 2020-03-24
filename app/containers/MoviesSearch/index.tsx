@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { push } from 'connected-react-router';
 import { Flex, Box } from '@rebass/grid';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
@@ -47,6 +47,7 @@ function getMoviesList(mvs: MovieListItemType[], dispatch) {
 }
 
 const key = 'movieSearch';
+export const intlScope = 'boilerplate.containers.MoviesSearch.';
 
 const stateSelector = createStructuredSelector({
   movies: makeSelectMovies(),
@@ -56,7 +57,8 @@ const stateSelector = createStructuredSelector({
   error: makeSelectError(),
 });
 
-export default function MovieSearch() {
+function MovieSearch(props) {
+  const { formatMessage } = props.intl;
   const { movies, searchName, error, totalResults } = useSelector(
     stateSelector,
   );
@@ -93,6 +95,7 @@ export default function MovieSearch() {
               onChangeText={onChangeMovieName}
               value={searchName}
               onPressEnter={onMakeSearch}
+              placeholder={formatMessage({ id: `${intlScope}enterMovieName` })}
             />
           </Box>
           <Flex w={1} py={2} justifyContent={'flex-end'}>
@@ -116,3 +119,6 @@ export default function MovieSearch() {
     </Flex>
   );
 }
+
+
+export default injectIntl(MovieSearch);
