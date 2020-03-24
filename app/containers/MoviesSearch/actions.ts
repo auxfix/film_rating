@@ -9,5 +9,5 @@ export const moviesLoaded = (searchResult: {
   Search: MovieListItemType[],
   totalResults: number,
 }) => action(ActionTypes.LOAD_MOVIES_SUCCESS, searchResult);
-export const moviesLoadingError = (error: object) =>
+export const moviesLoadingError = (error: string) =>
   action(ActionTypes.LOAD_MOVIES_ERROR, error);

@@ -19,10 +19,15 @@ const makeSelectSearchName = () =>
   createSelector(selectHome, substate => {
     return substate.moviename;
   });
+const makeSelectError = () =>
+  createSelector(selectHome, substate => {
+    return substate.error;
+  });
 
 export {
   selectHome,
   makeSelectSearchName,
   makeSelectMovies,
   makeSelectTotalResults,
+  makeSelectError,
 };

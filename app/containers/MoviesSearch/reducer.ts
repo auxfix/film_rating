@@ -15,13 +15,20 @@ function searchMovieReducer(
     case ActionTypes.CHANGE_MOVIE_NAME:
       return {
         ...state,
+        error: undefined,
         moviename: action.payload,
       };
     case ActionTypes.LOAD_MOVIES_SUCCESS:
       return {
         ...state,
         movies: action.payload.Search,
+        error: undefined,
         totalResults: action.payload.totalResults,
+      };
+    case ActionTypes.LOAD_MOVIES_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

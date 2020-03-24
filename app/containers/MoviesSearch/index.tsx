@@ -8,10 +8,10 @@ import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectError, makeSelectLoading } from 'containers/App/selectors';
+import { makeSelectLoading } from 'containers/App/selectors';
 import { changeMovieName, loadMovies } from './actions';
 import BigInput from 'components/BigInput';
-import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults } from './selectors';
+import { makeSelectSearchName, makeSelectMovies, makeSelectTotalResults, makeSelectError } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { MovieListItemType } from './components/MovieListItem/types';
@@ -19,6 +19,28 @@ import MovieItem from './components/MovieListItem';
 import Button from 'components/Button';
 import messages from './messages';
 import Pagination from 'components/Pagination';
+
+function getError(err: string) {
+  return (
+    <Flex
+      width={1}
+      justifyContent="center"
+    >
+      {err}
+    </Flex>
+  );
+}
+
+function getMoviesList(mvs: MovieListItemType[], dispatch) {
+  return mvs && mvs.map((mv: MovieListItemType) => (
+    <MovieItem
+      key={mv.imdbID}
+      movie={mv}
+      onMovieClick={(id) => dispatch(push(`/details/${id}`))}
+    />
+  ));
+}
+
 
 const key = 'movieSearch';
 
@@ -31,16 +53,13 @@ const stateSelector = createStructuredSelector({
 });
 
 export default function MovieSearch() {
-  const { movies, searchName, loading, error, totalResults } = useSelector(stateSelector);
+  const { movies, searchName, error, totalResults } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
   const onChangeMovieName = (searchString) => dispatch(changeMovieName(searchString));
   const onMakeSearch = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
       evt.preventDefault();
-    }
-    if (!searchName) {
-      return;
     }
     dispatch(loadMovies(1));
   };
@@ -92,15 +111,7 @@ export default function MovieSearch() {
               <FormattedMessage {...messages.Search} />
             </Button>
           </Flex>
-          {
-            movies && movies.map((mv: MovieListItemType) => (
-              <MovieItem
-                key={mv.imdbID}
-                movie={mv}
-                onMovieClick={(id) => dispatch(push(`/details/${id}`))}
-              />
-            ))
-          }
+          {!!error ? getError(error) : getMoviesList(movies, dispatch)}
         </Box>
         <Flex
           w={1}

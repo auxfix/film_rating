@@ -9,6 +9,7 @@ interface SearchMovies {
   readonly moviename: string;
   readonly movies: MovieListItemType[];
   readonly totalResults: number;
+  error?: string;
 }
 
 /* --- ACTIONS --- */
