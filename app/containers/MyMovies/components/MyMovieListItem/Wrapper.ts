@@ -14,7 +14,7 @@ export default styled.div`
   align-items: center;
   font-weight: 500;
   font-size: 20px;
-  color: ${colors.grey_blue}
+  color: ${colors.grey_blue};
   width: 100%;
   padding-top: 15px;
   cursor: pointer;

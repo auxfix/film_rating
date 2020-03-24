@@ -23,7 +23,7 @@ function BigInput(props: Props) {
         onPressEnter(value);
       }
     }
-  }
+  };
 
 
   return (
