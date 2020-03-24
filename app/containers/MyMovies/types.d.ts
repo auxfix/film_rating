@@ -21,6 +21,7 @@ export { MyMovieListItemType };
 interface MyMoviesState {
   readonly movies: MyMovieListItemType[];
   readonly sort: SortState;
+  readonly error?: string;
 }
 
 /* --- ACTIONS --- */

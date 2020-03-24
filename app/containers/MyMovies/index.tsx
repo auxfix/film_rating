@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectMyMovies, makeSelectMyMoviesSort } from './selectors';
+import { makeSelectMyMovies, makeSelectMyMoviesSort, makeSelectMyMoviesError } from './selectors';
 import { getMyMovies, changeSorting } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -24,10 +24,11 @@ const key = 'myMovies';
 const stateSelector = createStructuredSelector({
   movies: makeSelectMyMovies(),
   sortState: makeSelectMyMoviesSort(),
+  error: makeSelectMyMoviesError(),
 });
 
 export default function HomePage() {
-  const { movies, sortState } = useSelector(stateSelector);
+  const { movies, sortState, error } = useSelector(stateSelector);
   const sortedMovies = sortUtil(movies, sortState.field, sortState.order);
 
   const dispatch = useDispatch();
@@ -38,6 +39,18 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(getMyMovies());
   }, []);
+
+  if (!!error) {
+    return (
+      <Flex
+        width={1}
+        pt={5}
+        justifyContent="center"
+      >
+        {error}
+      </Flex>
+    );
+  }
 
   return (
     <Flex

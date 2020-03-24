@@ -17,7 +17,13 @@ function myMoviesReducer(
     case ActionTypes.LOAD_MY_MOVIES_SUCCESS:
       return {
         ...state,
+        error: undefined,
         movies: action.payload.movies,
+      };
+    case ActionTypes.LOAD_MY_MOVIES_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     case ActionTypes.CHANGE_SORTING:
       return {

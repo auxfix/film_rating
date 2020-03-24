@@ -9,7 +9,7 @@ export function* getMyMovies() {
     const myMovies = yield call(API.MyMovie.getMyMovies);
     yield put(myMoviesLoaded(myMovies));
   } catch (err) {
-    yield put(myMoviesLoadedError(err));
+    yield put(myMoviesLoadedError(err.message));
   }
 }
 

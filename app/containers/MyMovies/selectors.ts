@@ -14,5 +14,14 @@ const makeSelectMyMoviesSort = () =>
   createSelector(selectMyMoviesState, substate => {
     return substate.sort;
   });
+const makeSelectMyMoviesError = () =>
+  createSelector(selectMyMoviesState, substate => {
+    return substate.error;
+  });
 
-export { selectMyMoviesState, makeSelectMyMovies, makeSelectMyMoviesSort };
+export {
+  selectMyMoviesState,
+  makeSelectMyMovies,
+  makeSelectMyMoviesSort,
+  makeSelectMyMoviesError,
+};
