@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import Wrapper from '../Wrapper';
 
 describe('Wrapper', () => {
-  it('should render an <input> tag', () => {
+  it('should render an <div> tag', () => {
     const { container } = render(<Wrapper/>);
     expect((container.firstChild! as HTMLElement).tagName).toEqual('DIV');
   });

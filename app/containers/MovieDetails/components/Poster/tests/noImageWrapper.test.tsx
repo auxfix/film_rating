@@ -1,28 +1,28 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Wrapper from '../Wrapper';
+import NoImageWrapper from '../NoImageWrapper';
 
-describe('Wrapper', () => {
+describe('NoImageWrapper', () => {
   it('should render an <div> tag', () => {
-    const { container } = render(<Wrapper/>);
+    const { container } = render(<NoImageWrapper/>);
     expect((container.firstChild! as HTMLElement).tagName).toEqual('DIV');
   });
 
   it('should have a class attribute', () => {
-    const { container } = render(<Wrapper/>);
+    const { container } = render(<NoImageWrapper/>);
     expect((container.firstChild! as HTMLElement).hasAttribute('class')).toBe(true);
   });
 
   it('should adopt a valid attribute', () => {
     const id = 'test';
-    const { container } = render(<Wrapper id={id} />);
+    const { container } = render(<NoImageWrapper id={id} />);
     expect((container.firstChild! as HTMLElement).hasAttribute('id')).toBe(true);
     expect((container.firstChild! as HTMLElement).id).toEqual(id);
   });
 
   it('should not adopt an invalid attribute', () => {
-    const InvalidItem = Wrapper as any;
+    const InvalidItem = NoImageWrapper as any;
     const { container } = render(<InvalidItem attribute="test" />);
     expect((container.firstChild! as HTMLElement).hasAttribute('attribute')).toBe(false);
   });
