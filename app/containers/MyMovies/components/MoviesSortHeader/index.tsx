@@ -8,7 +8,7 @@ import { Sort } from '../../constants';
 import { ArrowDown, ArrowUp } from './arrows';
 import messages from './messages';
 
-const ClickWrapper = styled.div`
+export const ClickWrapper = styled.div`
   cursor: pointer;
 `;
 
