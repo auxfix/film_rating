@@ -5,7 +5,7 @@ import {
   ratingWasSaved,
   detailsLoadedError,
   detailsLoaded,
-  getMovieDetails
+  getMovieDetails,
 } from '../actions';
 import ActionTypes from '../constants';
 import { MovieDetails } from '../types';
