@@ -6,12 +6,6 @@ import {
 } from '../actions';
 import { ContainerState } from '../types';
 
-export const initialState: ContainerState = {
-  moviename: '',
-  movies: [],
-  totalResults: 0,
-};
-
 describe('Movies Search Reducer', () => {
   let state: ContainerState;
   beforeEach(() => {
