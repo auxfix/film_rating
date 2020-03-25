@@ -6,7 +6,6 @@ interface MyMovieListItemType {
   Title: string;
   imdbID: string;
   rating: number;
-  sort: SortState;
 }
 
 interface SortState {
