@@ -6,7 +6,6 @@ import {
   moviesLoaded,
 } from '../actions';
 import ActionTypes from '../constants';
-import { MovieListItemType } from '../components/MovieListItem/types';
 
 describe('Movies Search Actions', () => {
   it('loadMovies', () => {
