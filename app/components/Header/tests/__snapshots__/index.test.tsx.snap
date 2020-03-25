@@ -1,36 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Header /> should render a div 1`] = `
-<div>
-  <a
-    class="sc-bdVaJa sc-bwzfXH fAferc"
-    href="https://www.reactboilerplate.com/"
-  >
-    <img
-      alt="react-boilerplate - Logo"
-      class="sc-htpNat ckduvH"
-      src="IMAGE_MOCK"
-    />
-  </a>
-  <div
-    class="sc-bxivhb EYjjH"
-  >
+<div
+  class="sc-htpNat kDSLmS"
+>
+  <div>
     <a
-      class="sc-ifAKCX cIlifk"
+      class="sc-bdVaJa fraHot"
       href="/"
     >
       <span>
-        Home
+        Movie search
       </span>
     </a>
     <a
-      class="sc-ifAKCX cIlifk"
-      href="/features"
+      class="sc-bdVaJa fraHot"
+      href="/my"
     >
       <span>
-        Features
+        My Movies
       </span>
     </a>
+  </div>
+  <div
+    class="sc-bwzfXH fBygPc"
+  >
+    <div
+      class="Dropdown-root"
+    >
+      <div
+        aria-haspopup="listbox"
+        class="Dropdown-control"
+      >
+        <div
+          class="Dropdown-placeholder is-selected"
+        >
+          en
+        </div>
+        <div
+          class="Dropdown-arrow-wrapper"
+        >
+          <span
+            class="Dropdown-arrow"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
