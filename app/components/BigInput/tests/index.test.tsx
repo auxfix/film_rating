@@ -6,7 +6,7 @@ import BigInput from '../index';
 
 const testValue = 'test_input_value';
 const testInputPlaceholder = 'placeholder';
- 
+
 const renderComponent = (props: any = {}) => {
   const utils = render(<BigInput {...props}/>);
   const input = utils.container.querySelector('input');
