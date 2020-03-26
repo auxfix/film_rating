@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/SoFarAwayDev/film_rating.svg?branch=master)](https://travis-ci.org/SoFarAwayDev/film_rating)
 # film_rating
 
-**film_rating ([movieratingsystem.rocks](http://movieratingsystem.rocks/))  - is a small movie rating web app.**
-In this application you can:
+**film_rating ([movieratingsystem.rocks](http://movieratingsystem.rocks/))  - is a small movie rating web app.
+In this application you can:**
   - find a movie in the open 3d party database 
   - rate the movie and save it locally(in localstorage=)) 
   - list/sort all saved films 
