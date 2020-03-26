@@ -1,5 +1,5 @@
 enum GlobalConstants {
-  moviesDbApi = 'http://www.omdbapi.com/?apikey=6042696e&',
+  moviesDbApi = 'https://www.omdbapi.com/?apikey=6042696e&',
   myMoviesStorageName = 'my_movies',
 }
 
