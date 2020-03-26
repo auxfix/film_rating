@@ -16,5 +16,5 @@ here is the main stack/technologies features:
   - styled-components for the styling
   - react-intl for the i18n
   - it has a decent test coverage > 60%
-  - (actually that app is based on that amazing [boilerplate](https://github.com/react-boilerplate/react-boilerplate-typescript)
+  - (actually this app is based on that amazing [boilerplate](https://github.com/react-boilerplate/react-boilerplate-typescript)
   so i want to thank the guys who wrote it  - they did amazing work!)
