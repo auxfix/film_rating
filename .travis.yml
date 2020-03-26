@@ -1,0 +1,43 @@
+language: node_js
+
+env:
+  global:
+    - PATH=$HOME/.local/bin:$PATH
+
+dist: xenial
+
+node_js:
+  - 8.16.0
+python:
+  - 3.7
+
+sudo: true
+
+cache:
+  pip: true
+  npm: true
+before_install:
+  - pip install --user --upgrade pip
+  - pip install --user awscli
+before_script:
+  - npm install
+script:
+  - npm run lint:coverage
+  - npm run test
+  - npm run build
+deploy:
+  on:
+    branch: master
+  provider: s3
+  region: $DEPLOY_REGION
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: $BUCKET_NAME
+  skip_cleanup: true
+  local_dir: build
+  cache_control: "max-age=21600"
+after_deploy:
+  - aws configure set preview.cloudfront true
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+
