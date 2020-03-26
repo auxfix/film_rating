@@ -3,7 +3,7 @@
 
 **film_rating ([movieratingsystem.rocks](http://movieratingsystem.rocks/))  - is a small movie rating web app.
 In this application you can:**
-  - find a movie in the open 3d party database 
+  - find a movie in the open third party database 
   - rate the movie and save it locally(in localstorage=)) 
   - list/sort all saved films 
   - it is all =)
